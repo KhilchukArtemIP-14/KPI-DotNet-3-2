@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NetBlog.DAL.Repositories
 {
-    internal class Repository<T> : IRepository<T> where T : class, IEntity
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly NetBlogDbContext _context;
         public Repository(NetBlogDbContext context) { 

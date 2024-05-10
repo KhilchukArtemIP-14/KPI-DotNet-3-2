@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NetBlog.BAL.Services.AuthServices
 {
-    public class AuthService
+    public class AuthService:IAuthService
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _config;

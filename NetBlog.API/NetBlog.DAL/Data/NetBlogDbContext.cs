@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NetBlog.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace NetBlog.DAL.Data
 {
-    public class NetBlogDbContext: DbContext
+    public class NetBlogDbContext: IdentityDbContext
     {
-        public NetBlogDbContext(DbContextOptions options):base(options) 
+        public NetBlogDbContext(DbContextOptions<NetBlogDbContext> options):base(options) 
         { }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
