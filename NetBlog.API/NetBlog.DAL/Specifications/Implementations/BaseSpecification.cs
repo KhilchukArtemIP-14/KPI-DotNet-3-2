@@ -19,10 +19,11 @@ namespace NetBlog.DAL.Specifications.Implementations
             _criteria = criteria;
             _includes = new List<Expression<Func<T, object>>>();
         }
+
         private Expression<Func<T, bool>> _criteria;
         private List<Expression<Func<T, object>>> _includes;
-        public Expression<Func<T, bool>> Criteria => _criteria;
 
+        public Expression<Func<T, bool>> Criteria => _criteria;
         public List<Expression<Func<T, object>>> Includes => _includes;
 
         public void AddInclude(Expression<Func<T, object>> include) { Includes.Add(include); }

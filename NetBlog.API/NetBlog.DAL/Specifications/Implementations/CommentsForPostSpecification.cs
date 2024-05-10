@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace NetBlog.DAL.Specifications.Implementations
 {
-    public class PostWithCommentsSpecification:BaseSpecification<Post>
+    public class CommentsForPostSpecification:BaseSpecification<Comment>
     {
-        public PostWithCommentsSpecification() {
-            AddInclude(p => p.Comments);
-        }
+        public CommentsForPostSpecification(Guid postId):base(c=>c.PostId== postId) { }
     }
 }
