@@ -1,0 +1,6 @@
+@NetBlog.API_HostAddress = http://localhost:5116
+
+GET {{NetBlog.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
