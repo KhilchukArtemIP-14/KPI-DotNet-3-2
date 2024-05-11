@@ -21,9 +21,9 @@ namespace NetBlog.API.Controllers
         {
             var result = await _authService.Register(dto);
 
-            if (result!=null) return Ok("User successfully created");
+            if (result==null) return BadRequest("Couldn't register user");
 
-            return BadRequest("Couldn't register user");
+            return Ok("User successfully created");
         }
 
         [HttpPost("login")]
@@ -31,9 +31,10 @@ namespace NetBlog.API.Controllers
         {
             var result = await _authService.Login(dto);
 
-            if (result != null) return Ok(result);
+            if (result == null) return BadRequest("Couldn't login user");
 
-            return BadRequest("Couldn't login user");
+            return Ok(result);
+            
         }
     }
 }

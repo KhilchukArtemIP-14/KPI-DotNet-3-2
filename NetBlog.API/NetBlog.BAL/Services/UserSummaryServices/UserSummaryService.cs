@@ -49,6 +49,7 @@ namespace NetBlog.BAL.Services.UserSummaryServices
                 {
                     var updatedSummary = new UserSummaryDTO()
                     {
+                        Id = userId,
                         Name = user.UserName,
                         Email = user.Email,
                     };

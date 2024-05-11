@@ -26,6 +26,9 @@ namespace NetBlog.DAL.Repositories
         public async Task<T> Delete(Guid id)
         {
             var entity = await _context.Set<T>().Where(t => !t.IsDeleted).FirstOrDefaultAsync(t => t.Id == id);
+
+            if (entity == null) return entity;
+
             entity.IsDeleted = true;
 
             await _context.SaveChangesAsync();
@@ -41,7 +44,10 @@ namespace NetBlog.DAL.Repositories
 
         public Task<T> Get(Guid id)
         {
-            return _context.Set<T>().Where(t => !t.IsDeleted).FirstOrDefaultAsync(t => t.Id == id);
+            return _context
+                .Set<T>()
+                .Where(t => !t.IsDeleted)
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public Task<List<T>> GetAll()
@@ -51,11 +57,18 @@ namespace NetBlog.DAL.Repositories
 
         public Task<List<T>> GetAll(ISpecification<T> specification)
         {
-            return ApplySpecifications(_context.Set<T>().AsQueryable(),specification).Where(t => !t.IsDeleted).ToListAsync();
+            return ApplySpecifications(_context.Set<T>().AsQueryable(),specification)
+                .Where(t => !t.IsDeleted)
+                .ToListAsync();
         }
 
         public async Task<T> Update(T entity)
         {
+            if (!_context.Set<T>().Local.Any(t => t.Id == entity.Id))
+            {
+                return null;
+            }
+
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;

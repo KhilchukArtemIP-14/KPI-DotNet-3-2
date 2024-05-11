@@ -11,6 +11,6 @@ namespace NetBlog.Common.DTO
         public string Title { get; set; }
         public string ContentPreview { get; set; }
         public string Content { get; set; }
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
     }
 }

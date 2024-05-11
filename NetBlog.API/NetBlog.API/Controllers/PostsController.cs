@@ -16,7 +16,7 @@ namespace NetBlog.API.Controllers
             _postService = postService;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(CreatePostDTO dto)
         {
@@ -24,11 +24,14 @@ namespace NetBlog.API.Controllers
             return Ok(post);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var post = await _postService.Delete(id);
+
+            if(post == null) return NotFound("Post not found");
+
             return Ok(post);
         }
 
@@ -36,10 +39,9 @@ namespace NetBlog.API.Controllers
         public async Task<IActionResult> GetById(Guid id)
         {
             var post = await _postService.GetById(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
+
+            if (post == null) return NotFound("Post not found");
+
             return Ok(post);
         }
 
@@ -50,11 +52,14 @@ namespace NetBlog.API.Controllers
             return Ok(postSummaries);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, UpdatePostDTO dto)
         {
             var post = await _postService.Update(id, dto);
+
+            if (post == null) return NotFound("Post not found");
+
             return Ok(post);
         }
     }
