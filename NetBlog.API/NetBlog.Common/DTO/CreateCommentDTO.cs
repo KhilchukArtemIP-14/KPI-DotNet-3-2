@@ -9,7 +9,7 @@ namespace NetBlog.Common.DTO
     public class CreateCommentDTO
     {
         public Guid PostId { get; set; }
-        public string CreatedBy { get; set; }
+        public string AuthorId { get; set; }
         public string CommentText { get; set; }
     }
 }

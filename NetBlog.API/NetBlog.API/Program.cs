@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NetBlog.API.Authorization;
 using NetBlog.BAL.Services.AuthServices;
 using NetBlog.BAL.Services.CommentsService;
 using NetBlog.BAL.Services.PostsServices;
@@ -66,6 +68,14 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICommentsService, CommentService>();
 builder.Services.AddScoped<IUserSummaryService, UserSummaryService>();
 
+builder.Services.AddScoped<IAuthorizationRequirement, CanModifyPostRequirement>();
+builder.Services.AddScoped<IAuthorizationRequirement, CanDeleteCommentRequirement>();
+builder.Services.AddScoped<IAuthorizationRequirement, CanUpdateUserSummaryRequirement>();
+
+builder.Services.AddScoped<IAuthorizationHandler, CanModifyPostHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, CanDeleteCommentHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, CanUpdateUserSummaryHandler>();
+
 builder.Services
     .AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()
@@ -95,6 +105,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanModifyPostPolicy", policy =>
+    {
+        policy.Requirements.Add(new CanModifyPostRequirement());
+    });
+    options.AddPolicy("CanDeleteCommentPolicy", policy =>
+    {
+        policy.Requirements.Add(new CanDeleteCommentRequirement());
+    });
+    options.AddPolicy("CanUpdateUserSummary", policy =>
+    {
+        policy.Requirements.Add(new CanUpdateUserSummaryRequirement());
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NetBlog.BAL.Services.UserSummaryService;
 using NetBlog.Common.DTO;
 
@@ -9,10 +10,12 @@ namespace NetBlog.API.Controllers
     public class UserSummaryController : Controller
     {
         private readonly IUserSummaryService _userSummaryService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public UserSummaryController(IUserSummaryService userSummaryService)
+        public UserSummaryController(IUserSummaryService userSummaryService, IAuthorizationService authorizationService)
         {
             _userSummaryService = userSummaryService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet("{id}")]
@@ -29,12 +32,18 @@ namespace NetBlog.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUserSummary(string id, UpdateUserDTO dto)
         {
-            var updatedUserSummary = await _userSummaryService.UpdateUserSummaryById(dto, id);
-            if (updatedUserSummary == null)
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanUpdateUserSummary");
+            if (tryAuth.Succeeded)
             {
-                return NotFound("User not found");
+                var updatedUserSummary = await _userSummaryService.UpdateUserSummaryById(dto, id);
+                if (updatedUserSummary == null)
+                {
+                    return NotFound("User not found");
+                }
+                return Ok(updatedUserSummary);
             }
-            return Ok(updatedUserSummary);
+
+            return new ForbidResult();
         }
     }
 }

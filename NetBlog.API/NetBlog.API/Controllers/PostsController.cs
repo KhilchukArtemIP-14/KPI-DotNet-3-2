@@ -10,29 +10,37 @@ namespace NetBlog.API.Controllers
     public class PostsController : Controller
     {
         private readonly IPostService _postService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public PostsController(IPostService postService)
+        public PostsController(IPostService postService, IAuthorizationService authorizationService)
         {
             _postService = postService;
+            _authorizationService = authorizationService;
         }
 
-        //[Authorize]
         [HttpPost]
+        [Authorize(Roles="Author")]
         public async Task<IActionResult> Add(CreatePostDTO dto)
         {
             var post = await _postService.Add(dto);
             return Ok(post);
         }
 
-        //[Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var post = await _postService.Delete(id);
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
 
-            if(post == null) return NotFound("Post not found");
+            if (tryAuth.Succeeded) 
+            {
+                var post = await _postService.Delete(id);
 
-            return Ok(post);
+                if (post == null) return NotFound("Post not found");
+
+                return Ok(post);
+            }
+
+            return new ForbidResult();
         }
 
         [HttpGet("{id}")]
@@ -52,15 +60,20 @@ namespace NetBlog.API.Controllers
             return Ok(postSummaries);
         }
 
-        //[Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, UpdatePostDTO dto)
         {
-            var post = await _postService.Update(id, dto);
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
 
-            if (post == null) return NotFound("Post not found");
+            if(tryAuth.Succeeded)
+            {
+                var post = await _postService.Update(id, dto);
 
-            return Ok(post);
+                if (post == null) return NotFound("Post not found");
+
+                return Ok(post);
+            }
+            return new ForbidResult();
         }
     }
 }

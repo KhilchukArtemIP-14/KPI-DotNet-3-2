@@ -11,6 +11,7 @@ namespace NetBlog.BAL.Services.CommentsService
     {
         public Task<List<CommentDTO>> GetCommentsForPost(Guid postId);
         public Task<CommentDTO> CreateComment(CreateCommentDTO dto);
+        public Task<CommentDTO> GetCommentById(Guid id);
         public Task<CommentDTO> DeleteComment(Guid commentId);
     }
 }

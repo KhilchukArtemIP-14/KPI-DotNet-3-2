@@ -44,6 +44,13 @@ namespace NetBlog.BAL.Services.CommentsService
             return _mapper.Map<CommentDTO>(result);
         }
 
+        public async Task<CommentDTO> GetCommentById(Guid id)
+        {
+            var result = await _repository.Get(id);
+
+            return _mapper.Map<CommentDTO>(result);
+        }
+
         public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId)
         {
             var spec = new CommentsForPostSpecification(postId);

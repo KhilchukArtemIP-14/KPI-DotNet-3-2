@@ -13,7 +13,8 @@ namespace NetBlog.Common.Mappings
     {
         public AutoMapperProfile() 
         {
-            CreateMap<Comment, CommentDTO>();
+            CreateMap<Comment, CommentDTO>()
+                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => new UserShortcutDTO { UserId = src.AuthorId }));
             CreateMap<Post, PostDTO>()
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => new UserShortcutDTO { UserId = src.CreatedBy }))
                 .ForMember(p=>p.Comments, opt=>opt.MapFrom(src=>src.Comments.Where(c=>!c.IsDeleted)));

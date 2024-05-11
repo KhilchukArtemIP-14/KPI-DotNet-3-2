@@ -1,13 +1,33 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using NetBlog.BAL.Services.PostsServices;
 using NetBlog.Common.DTO;
+using NetBlog.DAL.Repositories;
 
 namespace NetBlog.API.Authorization
 {
-    public class CanModifyPostHandler : AuthorizationHandler<CanModifyPostRequirement, PostDTO>
+    public class CanModifyPostHandler : AuthorizationHandler<CanModifyPostRequirement, Guid>
     {
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CanModifyPostRequirement requirement, PostDTO resource)
+        private readonly IPostService _postService;
+        public CanModifyPostHandler(IPostService postService)
         {
-            throw new NotImplementedException();
+            _postService = postService;
+        }
+        protected override async Task HandleRequirementAsync(
+            AuthorizationHandlerContext context, 
+            CanModifyPostRequirement requirement,
+            Guid postId)
+        {
+            var entity = await _postService.GetById(postId);
+            var userIdClaim = context.User.FindFirst("userId");
+            if (context.User.IsInRole("Author")
+                && userIdClaim != null
+                && entity!= null
+                && entity.CreatedBy.UserId == userIdClaim.Value)
+            {
+                context.Succeed(requirement);
+                return;
+            }
         }
     }
 }
