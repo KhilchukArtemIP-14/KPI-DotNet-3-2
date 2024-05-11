@@ -13,7 +13,7 @@ namespace NetBlog.Common.DTO
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
-        public int CreatedBy { get; set; }
+        public UserShortcutDTO CreatedBy { get; set; }
         public IEnumerable<CommentDTO> Comments { get; set; }
     }
 }

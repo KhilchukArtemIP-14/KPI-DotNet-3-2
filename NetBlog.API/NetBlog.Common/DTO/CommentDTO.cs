@@ -8,7 +8,7 @@ namespace NetBlog.Common.DTO
 {
     public class CommentDTO
     {
-        public string AuthorName { get; set; }
+        public UserShortcutDTO CreatedBy { get; set; }
         public string CommentText { get; set; }
         public DateTime DateCreated { get; set; }
     }

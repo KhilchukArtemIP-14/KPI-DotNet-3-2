@@ -29,7 +29,6 @@ namespace NetBlog.BAL.Services.AuthServices
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("userId", user.Id),
-                new Claim("visitorCardId",(await _userManager.GetClaimsAsync(user)).Where(c=>c.Type=="visitorCardId").FirstOrDefault().Value)
             };
             foreach (var role in roles)
             {
@@ -86,17 +85,12 @@ namespace NetBlog.BAL.Services.AuthServices
             var identityResult = await _userManager.CreateAsync(identityUser, registerUserDTO.Password);
             if (identityResult.Succeeded)
             {
-                    if (identityResult.Succeeded)
-                    {
-                        var claim = new Claim("visitorCardId", "");
-                        var result = await _userManager.AddClaimAsync(identityUser, claim);
+                if (registerUserDTO.Roles != null && registerUserDTO.Roles.Any())
+                {
+                    identityResult = await _userManager.AddToRolesAsync(identityUser, registerUserDTO.Roles);
 
-                        if (result.Succeeded)
-                        {
-                            return identityResult;
-                        }
-                    }
-        
+                    if(identityResult.Succeeded) return identityResult;
+                }
             }
             return null;
         }

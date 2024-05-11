@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.AspNetCore.Identity;
+using NetBlog.BAL.Services.UserSummaryService;
 using NetBlog.Common.DTO;
 using NetBlog.DAL.Models;
 using NetBlog.DAL.Repositories;
@@ -16,11 +18,14 @@ namespace NetBlog.BAL.Services.CommentsService
     {
         private readonly IRepository<Comment> _repository;
         private readonly IMapper _mapper;
+        private readonly IUserSummaryService _userSummaryService;
 
-        public CommentService(IRepository<Comment> repository, IMapper mapper)
+
+        public CommentService(IRepository<Comment> repository, IMapper mapper, IUserSummaryService userSummaryService)
         {
             _repository = repository;
             _mapper = mapper;
+            _userSummaryService = userSummaryService;
         }
 
         public async Task<CommentDTO> CreateComment(CreateCommentDTO dto)
@@ -43,7 +48,13 @@ namespace NetBlog.BAL.Services.CommentsService
         {
             var spec = new CommentsForPostSpecification(postId);
 
-            var result = await _repository.GetAll(spec);
+            var comments = await _repository.GetAll(spec);
+            var result = _mapper.Map<List<CommentDTO>>(comments);
+
+            foreach (var res in result)
+            {
+                res.CreatedBy = await _userSummaryService.GetUserShortcut(res.CreatedBy.UserId);
+            }
 
             return _mapper.Map<List<CommentDTO>>(result);
         }

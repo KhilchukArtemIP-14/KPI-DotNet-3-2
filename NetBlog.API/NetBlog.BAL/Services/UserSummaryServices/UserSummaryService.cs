@@ -18,6 +18,19 @@ namespace NetBlog.BAL.Services.UserSummaryServices
             _userManager = userManager;
         }
 
+        public async Task<UserShortcutDTO> GetUserShortcut(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            var name = user != null ? user.UserName : "NOT FOUND";
+
+            return new UserShortcutDTO
+            {
+                UserId = id,
+                UserName = name
+            };
+        }
+
         public async Task<UserSummaryDTO> GetUserSummary(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -29,6 +42,7 @@ namespace NetBlog.BAL.Services.UserSummaryServices
                     Id = id,
                     Name = user.UserName,
                     Email = user.Email,
+                    Roles = (await _userManager.GetRolesAsync(user)).ToArray()
                 };
                 return summary;
             }
@@ -52,11 +66,13 @@ namespace NetBlog.BAL.Services.UserSummaryServices
                         Id = userId,
                         Name = user.UserName,
                         Email = user.Email,
+                        Roles = (await _userManager.GetRolesAsync(user)).ToArray()
                     };
                     return updatedSummary;
                 };
             }
             return null;
         }
+
     }
 }

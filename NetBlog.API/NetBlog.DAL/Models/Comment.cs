@@ -9,7 +9,7 @@ namespace NetBlog.DAL.Models
     public class Comment:IEntity
     {
         public Guid Id { get; set; }
-        public string AuthorName { get; set; }
+        public string AuthorId { get; set; }
         public string CommentText { get; set; }
         public DateTime DateCreated { get; set; }
         public Guid PostId { get; set; }

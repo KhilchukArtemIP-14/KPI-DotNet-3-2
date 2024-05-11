@@ -15,8 +15,10 @@ namespace NetBlog.Common.Mappings
         {
             CreateMap<Comment, CommentDTO>();
             CreateMap<Post, PostDTO>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => new UserShortcutDTO { UserId = src.CreatedBy }))
                 .ForMember(p=>p.Comments, opt=>opt.MapFrom(src=>src.Comments.Where(c=>!c.IsDeleted)));
-            CreateMap<Post, PostSummaryDTO>();
+            CreateMap<Post, PostSummaryDTO>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => new UserShortcutDTO { UserId = src.CreatedBy }));
             CreateMap<CreateCommentDTO, Comment>().
                 ForMember(c=>c.DateCreated, opt=>opt.MapFrom(_=>DateTime.Now));
             CreateMap<CreatePostDTO, Post>()
