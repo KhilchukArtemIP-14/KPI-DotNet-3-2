@@ -12,7 +12,7 @@
     <div class="card bg-light text-dark mb-3">
       <div class="card-body p-3">
         <h4>{{post.title}}</h4>
-        <p class="text-secondary font-italic">Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</p>
+        <p class="text-secondary font-italic">{{post.createdBy.userName}}<i class="bi bi-dot fs-5"></i>Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</p>
         <p>{{post.contentPreview}}...</p>
         <a class="btn btn-primary" href="/posts/{{post.id}}">View</a>
       </div>
