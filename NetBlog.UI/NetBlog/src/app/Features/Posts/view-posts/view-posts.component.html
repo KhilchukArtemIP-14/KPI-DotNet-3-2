@@ -1,0 +1,21 @@
+<div class="container">
+  <h3 class="mt-2">All posts:</h3>
+  <div class="input-group mb-3">
+    <div class="form-outline" data-mdb-input-init>
+      <input id="search-input" type="search" id="form1" class="form-control" placeholder="Search posts"/>
+    </div>
+    <button id="search-button" type="button" class="btn btn-primary">
+      <i class="bi-search"></i>
+    </button>
+  </div>
+  <div *ngFor="let post of posts">
+    <div class="card bg-light text-dark mb-3">
+      <div class="card-body p-3">
+        <h4>{{post.title}}</h4>
+        <p class="text-secondary font-italic">Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</p>
+        <p>{{post.contentPreview}}...</p>
+        <a class="btn btn-primary" href="/posts/{{post.id}}">View</a>
+      </div>
+    </div>
+  </div>
+</div>
