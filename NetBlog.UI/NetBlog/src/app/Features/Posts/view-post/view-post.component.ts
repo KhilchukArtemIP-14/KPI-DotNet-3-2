@@ -27,6 +27,6 @@ export class ViewPostComponent implements OnInit{
   ngOnInit(): void {
       this.postService
         .getPostById(this.postId)
-        .subscribe(data=> this.post=data)
+        .subscribe(data=> {this.post=data; console.log(data)})
   }
 }
