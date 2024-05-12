@@ -39,6 +39,7 @@ export class CreatePostComponent implements OnInit{
     this.postService.addPost(data).subscribe(()=>{
       this.toastr.success("Post created successfully!")
       this.router.navigate(['/posts']);
-    })
+    },
+      error => this.toastr.error("Oops, couldn't create a post"))
   }
 }
