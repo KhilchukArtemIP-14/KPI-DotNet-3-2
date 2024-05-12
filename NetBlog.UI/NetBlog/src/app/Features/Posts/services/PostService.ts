@@ -5,9 +5,9 @@ import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {PostDTO} from "../models/PostDTO";
 import {PostSummaryDTO} from "../models/PostSummaryDTO";
+import {UpdatePostDTO} from "../models/UpdatePostDTO";
 
-class UpdatePostDTO {
-}
+
 
 @Injectable({
   providedIn: 'root'

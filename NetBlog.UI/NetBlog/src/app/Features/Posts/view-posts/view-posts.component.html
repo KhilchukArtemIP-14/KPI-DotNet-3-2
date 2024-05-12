@@ -1,6 +1,7 @@
 <div class="container">
   <h3 class="mt-2">All posts:</h3>
-  <div class="input-group mb-3">
+  <a *ngIf="isAuthor()" class="btn btn-success" [routerLink]="['create']">Create post</a>
+  <div class="input-group mb-3 mt-3">
     <div class="form-outline" data-mdb-input-init>
       <input id="search-input" type="search" id="form1" class="form-control" placeholder="Search posts"/>
     </div>
@@ -14,7 +15,7 @@
         <h4>{{post.title}}</h4>
         <p class="text-secondary font-italic">{{post.createdBy.userName}}<i class="bi bi-dot fs-5"></i>Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</p>
         <p>{{post.contentPreview}}...</p>
-        <a class="btn btn-primary" href="/posts/{{post.id}}">View</a>
+        <a class="btn btn-primary" [routerLink]="['/posts/',post.id]">View</a>
       </div>
     </div>
   </div>

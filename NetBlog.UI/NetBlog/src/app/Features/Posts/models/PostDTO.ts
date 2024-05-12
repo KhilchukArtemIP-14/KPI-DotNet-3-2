@@ -5,6 +5,7 @@ export interface PostDTO {
   id: string;
   title: string;
   content: string;
+  contentPreview: string;
   dateCreated: Date;
   dateUpdated?: Date;
   createdBy: UserShortcutDTO;

@@ -5,6 +5,7 @@ import {ViewPostComponent} from "./Features/Posts/view-post/view-post.component"
 import {CreatePostComponent} from "./Features/Posts/create-post/create-post.component";
 import {RegisterComponent} from "./Features/Auth/register/register.component";
 import {LoginComponent} from "./Features/Auth/login/login.component";
+import {EditPostComponent} from "./Features/Posts/edit-post/edit-post.component";
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path:"posts/:id",
     component:ViewPostComponent
+  },
+  {
+    path:"posts/:id/edit",
+    component:EditPostComponent
   },
   {
     path:"register",

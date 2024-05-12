@@ -57,7 +57,6 @@ export class AuthService {
   }
   updateUser(summary:UserDto){
     localStorage.setItem('Name', summary.name)
-    localStorage.setItem('userId', summary.userId)
     this.$user.next(this.getUser())
   }
 }

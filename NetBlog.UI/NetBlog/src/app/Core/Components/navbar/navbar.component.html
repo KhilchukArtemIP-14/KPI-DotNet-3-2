@@ -19,6 +19,7 @@
       <a *ngIf="!user" class="btn btn-primary m-md-3" type="search" placeholder="Search" href="/login">Log in</a>
       <ng-container *ngIf="user">
         <a class="fs-4 text-decoration-none" [routerLink]="['/users/',user.userId]">Hello, {{user.name}}!</a>
+        <button class="btn btn-danger ms-3" (click)="logout()">Log out</button>
       </ng-container>
     </div>
   </div>
