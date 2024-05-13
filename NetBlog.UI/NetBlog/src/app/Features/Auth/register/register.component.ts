@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth-service";
 import {Router} from "@angular/router";
 import {RegisterUserDTO} from "../models/register-user-dto";
 import {ToastrService} from "ngx-toastr";
+import {ConsoleLogger} from "@angular/compiler-cli";
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class RegisterComponent implements OnInit{
   public registrationForm!:FormGroup;
-  public isAuthor = true
+  public isAuthor = false
   public constructor(private authService: AuthService,
                      private formBuilder: FormBuilder,
                      private toastr:ToastrService,
@@ -34,11 +35,11 @@ export class RegisterComponent implements OnInit{
     public submit(){
       var regDTO = this.registrationForm.value as RegisterUserDTO
       regDTO.roles=[this.isAuthor?"Author":"Reader"]
-
+      console.log(regDTO)
       this.authService.register(regDTO).subscribe(res=>{
         this.toastr.success("Registered successfully")
         this.router.navigate(['/login'])
       },
-        error => this.toastr.error("Oops, couldn't login"))
+        error => {this.toastr.error("Oops, couldn't register"); console.log(error)})
     }
 }

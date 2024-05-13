@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {CreatePostDTO} from "../models/CreatePostDTO";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../Auth/services/auth-service";
 
 @Component({
   selector: 'app-create-post',
@@ -19,7 +20,8 @@ export class CreatePostComponent implements OnInit{
   public constructor(private postService:PostsService,
                      private fb: FormBuilder,
                      private router: Router,
-                     private toastr:ToastrService
+                     private toastr:ToastrService,
+                     private authService:AuthService
 ) {
   }
 
@@ -28,9 +30,7 @@ export class CreatePostComponent implements OnInit{
           title:["", Validators.required],
           contentPreview:["", Validators.required],
           content:["",Validators.required],
-
-          //TO-DO: change it to id from JWT after implementing auth
-          createdBy:["0b7765c5-a2d4-4782-ae36-2ff500421954"]
+          createdBy:[this.authService.getUser()?.userId, Validators.required]
         })
     }
   public Submit(){

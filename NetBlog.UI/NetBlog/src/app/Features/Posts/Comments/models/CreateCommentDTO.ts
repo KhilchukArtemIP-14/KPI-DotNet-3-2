@@ -1,8 +1,7 @@
 import {UserShortcutDTO} from "../../../Auth/models/UserShortcutDTO";
 
-export interface CommentDTO {
-  id:string;
-  createdBy: UserShortcutDTO;
+export interface CreateCommentDTO{
+  postId:string;
+  authorId: string  ;
   commentText: string;
-  dateCreated: Date;
 }

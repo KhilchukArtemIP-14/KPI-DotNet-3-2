@@ -1,6 +1,7 @@
 <div class="container">
   <h1 class="mt-4">{{post.title}}</h1>
   <a *ngIf="canEdit()" class="btn btn-success" [routerLink]="['/posts/',postId,'edit']">Edit</a>
+  <button class="btn btn-danger ms-2" *ngIf="canEdit()" (click)="delete()">Delete</button>
 
   <h6 class="text-secondary font-italic">{{post.createdBy.userName}}<i class="bi bi-dot fs-5"></i>Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</h6>
   <h6 *ngIf="post.dateUpdated!=null" class="text-secondary font-italic">Last updated: {{post.dateUpdated | date:'MM/dd/yyyy HH:mm'}}</h6>
@@ -8,12 +9,5 @@
 
   <hr/>
   <h3>Comments:</h3>
-  <p *ngIf="post.comments.length==0" class="text-secondary fs-5">No comments yet...</p>
-  <div *ngFor="let comment of post.comments" class="card bg-light text-dark mb-3">
-    <div class="card-body p-3">
-      <h4>{{comment.createdBy.userName}}</h4>
-      <p class="text-secondary font-italic">{{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</p>
-      <p>{{comment.commentText}}</p>
-    </div>
-  </div>
+  <app-view-post-comments [comments]="post.comments" [postId]="postId"></app-view-post-comments>
 </div>

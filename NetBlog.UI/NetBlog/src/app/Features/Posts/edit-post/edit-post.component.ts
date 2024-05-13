@@ -27,7 +27,6 @@ export class EditPostComponent {
                      private router: Router,
                      private toastr:ToastrService,
                      private route: ActivatedRoute,
-                     private authService:AuthService
   ) {
   }
 
