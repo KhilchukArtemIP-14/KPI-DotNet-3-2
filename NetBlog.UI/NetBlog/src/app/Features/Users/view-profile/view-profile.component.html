@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>{{userData.name}}<i class="bi bi-dot"></i>{{userData.roles.join(", ")}}</h1>
+  <p class="fs-4"> <span class="fst-italic fs-3">Email:</span> {{userData.email}}</p>
+  <p class="fs-4 fst-italic">About myself:</p>
+  <p class="fs-4" *ngFor="let passage of userData.bio.split('\n')">{{passage}}</p>
+  <a *ngIf="isAccountOwner()" class="btn btn-primary" [routerLink]="['edit']">Edit</a>
+</div>

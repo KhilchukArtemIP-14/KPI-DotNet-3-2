@@ -28,7 +28,6 @@ export class AuthService {
     this.$user.next(response)
     localStorage.setItem('Name', response.name)
     localStorage.setItem('Roles', response.roles.join(','))
-    localStorage.setItem('Email', response.email)
     localStorage.setItem('UserId', response.userId)
   }
   user() : Observable<UserDto | undefined> {
@@ -36,13 +35,11 @@ export class AuthService {
   }
 
   getUser():UserDto|undefined{
-    const email = localStorage.getItem('Email');
     const roles = localStorage.getItem('Roles');
     const name = localStorage.getItem('Name');
     const id = localStorage.getItem('UserId');
-    if (email && roles && name && id ) {
+    if (roles && name && id ) {
       return {
-        email: email,
         userId:id,
         name: name,
         roles: roles.split(','),

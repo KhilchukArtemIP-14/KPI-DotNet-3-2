@@ -6,6 +6,8 @@ import {CreatePostComponent} from "./Features/Posts/create-post/create-post.comp
 import {RegisterComponent} from "./Features/Auth/register/register.component";
 import {LoginComponent} from "./Features/Auth/login/login.component";
 import {EditPostComponent} from "./Features/Posts/edit-post/edit-post.component";
+import {ViewProfileComponent} from "./Features/Users/view-profile/view-profile.component";
+import {EditProfileComponent} from "./Features/Users/edit-profile/edit-profile.component";
 
 export const routes: Routes = [
   {
@@ -35,5 +37,13 @@ export const routes: Routes = [
   {
     path:"login",
     component:LoginComponent
+  },
+  {
+    path:"users/:id",
+    component:ViewProfileComponent
+  },
+  {
+    path:"users/:id/edit",
+    component:EditProfileComponent
   },
 ];
