@@ -6,6 +6,8 @@ import {environment} from "../../../../environments/environment";
 import {PostDTO} from "../models/PostDTO";
 import {PostSummaryDTO} from "../models/PostSummaryDTO";
 import {UpdatePostDTO} from "../models/UpdatePostDTO";
+import {CommentShortcutDTO} from "../Comments/models/CommentShortcutDTO";
+import {PostShortcutDTO} from "../models/PostShortcutDTO";
 
 
 
@@ -34,5 +36,8 @@ export class PostsService {
 
   updatePost(id: string, dto: UpdatePostDTO): Observable<PostDTO> {
     return this.http.put<PostDTO>(`${environment.apiBaseUrl}/api/Posts/${id}`, dto);
+  }
+  getShortcutsOfUser(id: string):Observable<PostShortcutDTO[]>{
+    return this.http.get<PostShortcutDTO[]>(`${environment.apiBaseUrl}/api/Posts/user/${id}`);
   }
 }

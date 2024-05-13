@@ -4,4 +4,20 @@
   <p class="fs-4 fst-italic">About myself:</p>
   <p class="fs-4" *ngFor="let passage of userData.bio.split('\n')">{{passage}}</p>
   <a *ngIf="isAccountOwner()" class="btn btn-primary" [routerLink]="['edit']">Edit</a>
+  <h3 class="mt-4">Users comments:</h3>
+  <div class="card mt-2" *ngFor="let comment of comments">
+    <a class=".text-primary card-header fs-5 text-decoration-none fw-bold" [routerLink]="['/posts',comment.postId]">{{comment.postTitle}}</a>
+    <div class="card-body">
+      <p class="card-text fs-5">{{comment.commentText}}</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">Users posts:</h3>
+  <div *ngFor="let post of posts">
+    <div class="card mt-3">
+      <div class="card-body">
+        {{post.dateCreated| date:"dd.MM.YY"}} - <a [routerLink]="['posts',post.id]" class="text-decoration-none fw-bold">{{post.title}}</a>
+      </div>
+    </div>
+  </div>
 </div>
