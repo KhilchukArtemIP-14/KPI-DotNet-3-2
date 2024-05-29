@@ -22,10 +22,16 @@ namespace NetBlog.DAL.Specifications.Implementations
 
         private Expression<Func<T, bool>> _criteria;
         private List<Expression<Func<T, object>>> _includes;
+        private Expression<Func<T, object>> _orderBy;
+        private bool? _orderByAscending;
 
         public Expression<Func<T, bool>> Criteria => _criteria;
         public List<Expression<Func<T, object>>> Includes => _includes;
+        public Expression<Func<T, object>> OrderBy =>_orderBy;
+        public bool? OrderByAscending => _orderByAscending;
 
         public void AddInclude(Expression<Func<T, object>> include) { Includes.Add(include); }
+        public void AddOrderBy(Expression<Func<T, object>> orderBy, bool orderByAscending) { _orderBy = orderBy; _orderByAscending = orderByAscending; }
+
     }
 }

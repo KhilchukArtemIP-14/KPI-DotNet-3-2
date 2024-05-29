@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using NetBlog.BAL.Services.UserSummaryService;
 using NetBlog.Common.DTO;
 using NetBlog.DAL.Models;
 using NetBlog.DAL.Repositories;
@@ -15,11 +16,12 @@ namespace NetBlog.BAL.Services.PostsServices
     {
         private readonly IRepository<Post> _repository;
         private readonly IMapper _mapper;
-
-        public PostService(IRepository<Post> repository, IMapper mapper)
+        private readonly IUserSummaryService _userSummaryService;
+        public PostService(IRepository<Post> repository, IMapper mapper, IUserSummaryService userSummaryService)
         {
             _repository = repository;
             _mapper = mapper;
+            _userSummaryService = userSummaryService;
         }
 
         public async Task<PostDTO> Add(CreatePostDTO dto)
@@ -38,18 +40,37 @@ namespace NetBlog.BAL.Services.PostsServices
             return _mapper.Map<PostDTO>(result);
         }
 
-        public async Task<PostDTO> GetById(Guid id)
+        public async Task<PostDTO> GetById(Guid id, int commentsToLoad = 5)
         {
-            var spec = new PostWithCommentsSpecification();
+            var spec = new PostWithCommentsSpecification(commentsToLoad);
+            var entity = await _repository.Get(id, spec);
 
-            var result = await _repository.Get(id, spec);
-
+            var result = _mapper.Map<PostDTO>(entity);
+            result.CreatedBy = await _userSummaryService.GetUserShortcut(result.CreatedBy.UserId);
+            foreach(var comment in result.Comments)
+            {
+                comment.CreatedBy = await _userSummaryService.GetUserShortcut(comment.CreatedBy.UserId);
+            }
             return _mapper.Map<PostDTO>(result);
         }
 
-        public async Task<List<PostSummaryDTO>> GetSummaries()
+        public async Task<List<PostShortcutDTO>> GetPostShortcutsOfUser(string userId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
-            var result = await _repository.GetAll();
+            var spec = new PostsOfUserSpecification(userId);
+            var data = await _repository.GetAll(spec, pageNumber, pageSize);
+
+            return _mapper.Map<List<PostShortcutDTO>>(data);
+        }
+
+        public async Task<List<PostSummaryDTO>> GetSummaries(int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
+        {
+            var entitites = await _repository.GetAll(pageNumber, pageSize);
+
+            var result = _mapper.Map<List<PostSummaryDTO>>(entitites);
+            foreach(var res in result)
+            {
+                res.CreatedBy = await _userSummaryService.GetUserShortcut(res.CreatedBy.UserId);
+            }
 
             return _mapper.Map<List<PostSummaryDTO>>(result);
         }

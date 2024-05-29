@@ -50,15 +50,22 @@ namespace NetBlog.DAL.Repositories
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
 
-        public Task<List<T>> GetAll()
+        public Task<List<T>> GetAll(int pageNumber = 1, int pageSize = 5)
         {
-            return _context.Set<T>().Where(t => !t.IsDeleted).ToListAsync();
+            return _context
+                .Set<T>()
+                .Where(t => !t.IsDeleted)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
-        public Task<List<T>> GetAll(ISpecification<T> specification)
+        public Task<List<T>> GetAll(ISpecification<T> specification, int pageNumber = 1, int pageSize = 5)
         {
             return ApplySpecifications(_context.Set<T>().AsQueryable(),specification)
                 .Where(t => !t.IsDeleted)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
 
@@ -82,7 +89,13 @@ namespace NetBlog.DAL.Repositories
                 query= query.Where(specification.Criteria);
             }
 
-            query = specification.Includes.Aggregate(query,(current, include)=> current.Include(include));
+            query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
+
+            if (specification.OrderBy != null) 
+            {
+                query = specification.OrderByAscending.Value? query.OrderBy(specification.OrderBy): query.OrderByDescending(specification.OrderBy);
+            }
+
 
             return query;
         }

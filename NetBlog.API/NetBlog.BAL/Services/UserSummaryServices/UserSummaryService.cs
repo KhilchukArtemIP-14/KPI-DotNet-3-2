@@ -34,15 +34,18 @@ namespace NetBlog.BAL.Services.UserSummaryServices
         public async Task<UserSummaryDTO> GetUserSummary(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
+            var bioClaim = (await _userManager.GetClaimsAsync(user))
+                    .FirstOrDefault(c => c.Type == "bio");
 
-            if (user != null)
+            if (user != null&& bioClaim!=null)
             {
                 var summary = new UserSummaryDTO()
                 {
                     Id = id,
                     Name = user.UserName,
                     Email = user.Email,
-                    Roles = (await _userManager.GetRolesAsync(user)).ToArray()
+                    Roles = (await _userManager.GetRolesAsync(user)).ToArray(),
+                    Bio=bioClaim.Value
                 };
                 return summary;
             }
@@ -59,14 +62,25 @@ namespace NetBlog.BAL.Services.UserSummaryServices
                 user.UserName = dto.Name;
 
                 IdentityResult identityResult = await _userManager.UpdateAsync(user);
-                if (identityResult.Succeeded)
+
+                var bioClaim = (await _userManager.GetClaimsAsync(user))
+                    .FirstOrDefault(c => c.Type == "bio");
+                if (bioClaim != null)
+                {
+                    var result = await _userManager.RemoveClaimAsync(user, bioClaim);
+                }
+                var claim = new Claim("bio", dto.Bio);
+                var resultAddClaim = await _userManager.AddClaimAsync(user, claim);
+
+                if (identityResult.Succeeded && resultAddClaim.Succeeded)
                 {
                     var updatedSummary = new UserSummaryDTO()
                     {
                         Id = userId,
                         Name = user.UserName,
                         Email = user.Email,
-                        Roles = (await _userManager.GetRolesAsync(user)).ToArray()
+                        Roles = (await _userManager.GetRolesAsync(user)).ToArray(),
+                        Bio = dto.Bio,
                     };
                     return updatedSummary;
                 };

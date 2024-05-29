@@ -44,7 +44,7 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id, [FromQuery] int commentsToLoad = 5)
         {
             var post = await _postService.GetById(id);
 
@@ -52,11 +52,19 @@ namespace NetBlog.API.Controllers
 
             return Ok(post);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetSummaries()
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetPostShortcutsOfUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
         {
-            var postSummaries = await _postService.GetSummaries();
+            var post = await _postService.GetPostShortcutsOfUser(userId, pageNumber, pageSize);
+
+            if (post == null) return NotFound("Post not found");
+
+            return Ok(post);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPostSummaries([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        {
+            var postSummaries = await _postService.GetSummaries(pageNumber,pageSize);
             return Ok(postSummaries);
         }
 

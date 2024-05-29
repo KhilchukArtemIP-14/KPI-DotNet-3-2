@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace NetBlog.Common.DTO
 {
-    public class CommentDTO
+    public class CommentShortcutDTO
     {
-        public Guid Id { get; set; }
-        public UserShortcutDTO CreatedBy { get; set; }
+        public Guid PostId { get; set; }
+        public string PostTitle { get; set; }
         public string CommentText { get; set; }
-        public DateTime DateCreated { get; set; }
     }
 }

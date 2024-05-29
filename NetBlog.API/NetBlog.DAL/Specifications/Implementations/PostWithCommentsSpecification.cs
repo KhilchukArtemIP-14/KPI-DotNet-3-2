@@ -9,8 +9,8 @@ namespace NetBlog.DAL.Specifications.Implementations
 {
     public class PostWithCommentsSpecification:BaseSpecification<Post>
     {
-        public PostWithCommentsSpecification() {
-            AddInclude(p => p.Comments);
+        public PostWithCommentsSpecification(int commentsToFetch=5):base(){
+            AddInclude(p => p.Comments.Where(c => !c.IsDeleted).OrderByDescending(c=>c.DateCreated).Take(commentsToFetch));
         }
     }
 }

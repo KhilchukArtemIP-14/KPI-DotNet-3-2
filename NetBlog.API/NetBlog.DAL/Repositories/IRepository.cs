@@ -11,8 +11,8 @@ namespace NetBlog.DAL.Repositories
 {
     public interface IRepository<T> where T : class, IEntity
     {
-        Task<List<T>> GetAll();
-        Task<List<T>> GetAll(ISpecification<T> specification);
+        Task<List<T>> GetAll(int pageNumber = 1, int pageSize = 5);
+        Task<List<T>> GetAll(ISpecification<T> specification, int pageNumber = 1, int pageSize = 5);
         Task<T> Get(Guid id);
         Task<T> Get(Guid id, ISpecification<T> specification);
         Task<T> Add(T entity);

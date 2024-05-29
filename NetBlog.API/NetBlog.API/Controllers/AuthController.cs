@@ -21,9 +21,9 @@ namespace NetBlog.API.Controllers
         {
             var result = await _authService.Register(dto);
 
-            if (result==null) return BadRequest("Couldn't register user");
+            if (result==null) return BadRequest(new {Message="Couldn't register user"});
 
-            return Ok("User successfully created");
+            return Ok(new {Message = "User successfully created" });
         }
 
         [HttpPost("login")]

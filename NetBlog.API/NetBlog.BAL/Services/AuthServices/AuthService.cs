@@ -62,8 +62,10 @@ namespace NetBlog.BAL.Services.AuthServices
                     {
                         var response = new LoginResponseDTO()
                         {
-                            UserName = user.UserName,
+                            Name = user.UserName,
+                            Email=user.Email,
                             UserId = user.Id,
+                            Roles = roles.ToArray(),
                             Token = await CreateJWTToken(user, roles.ToList())
                         };
 
@@ -89,7 +91,12 @@ namespace NetBlog.BAL.Services.AuthServices
                 {
                     identityResult = await _userManager.AddToRolesAsync(identityUser, registerUserDTO.Roles);
 
-                    if(identityResult.Succeeded) return identityResult;
+                    if (identityResult.Succeeded)
+                    {
+                        var claim = new Claim("bio", "Empty");
+                        identityResult = await _userManager.AddClaimAsync(identityUser, claim);
+                        if(identityResult.Succeeded) return identityResult;
+                    }
                 }
             }
             return null;

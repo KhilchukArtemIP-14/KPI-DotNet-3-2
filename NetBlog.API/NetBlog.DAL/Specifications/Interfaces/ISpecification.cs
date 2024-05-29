@@ -12,5 +12,7 @@ namespace NetBlog.DAL.Specifications.Interfaces
     {
         Expression<Func<T, bool>> Criteria { get; }
         List<Expression<Func<T, object>>> Includes { get; }
+        Expression<Func<T, object>> OrderBy { get; }
+        public bool? OrderByAscending {  get; }
     }
 }

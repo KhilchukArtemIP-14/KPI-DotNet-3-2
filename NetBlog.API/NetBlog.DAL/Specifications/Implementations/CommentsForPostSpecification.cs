@@ -9,6 +9,9 @@ namespace NetBlog.DAL.Specifications.Implementations
 {
     public class CommentsForPostSpecification:BaseSpecification<Comment>
     {
-        public CommentsForPostSpecification(Guid postId):base(c=>c.PostId== postId) { }
+        public CommentsForPostSpecification(Guid postId, bool orderByAscending = false):base(c=>c.PostId== postId) 
+        {
+            AddOrderBy(c=>c.DateCreated, orderByAscending);
+        }
     }
 }

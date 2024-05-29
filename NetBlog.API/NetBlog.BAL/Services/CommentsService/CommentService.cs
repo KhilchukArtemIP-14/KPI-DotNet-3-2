@@ -31,10 +31,11 @@ namespace NetBlog.BAL.Services.CommentsService
         public async Task<CommentDTO> CreateComment(CreateCommentDTO dto)
         {
             var entity = _mapper.Map<Comment>(dto);
+            entity = await _repository.Add(entity);
 
-            var result = await _repository.Add(entity);
-
-            return _mapper.Map<CommentDTO>(result);
+            var result = _mapper.Map<CommentDTO>(entity);
+            result.CreatedBy = await _userSummaryService.GetUserShortcut(result.CreatedBy.UserId);
+            return result;
         }
 
         public async Task<CommentDTO> DeleteComment(Guid commentId)
@@ -51,11 +52,11 @@ namespace NetBlog.BAL.Services.CommentsService
             return _mapper.Map<CommentDTO>(result);
         }
 
-        public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId)
+        public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5)
         {
             var spec = new CommentsForPostSpecification(postId);
 
-            var comments = await _repository.GetAll(spec);
+            var comments = await _repository.GetAll(spec, pageNumber, pageSize);
             var result = _mapper.Map<List<CommentDTO>>(comments);
 
             foreach (var res in result)
@@ -64,6 +65,16 @@ namespace NetBlog.BAL.Services.CommentsService
             }
 
             return _mapper.Map<List<CommentDTO>>(result);
+        }
+
+        public async Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5)
+        {
+            var spec = new CommentsOfUserSpecification(userId);
+            var data = await _repository.GetAll(spec, pageNumber, pageSize);
+
+            var result = _mapper.Map<List<CommentShortcutDTO>>(data);
+
+            return result;
         }
     }
 }
