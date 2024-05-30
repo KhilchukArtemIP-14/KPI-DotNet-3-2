@@ -33,6 +33,7 @@ export class ViewPostCommentsComponent implements OnInit{
   private pageNumber = 1;
   public isLoading = false;
   public hasMore = true;
+  private orderByDateAscending: boolean = false;
 
   public commentForm!: FormGroup;
   ngOnInit(): void {
@@ -73,12 +74,25 @@ export class ViewPostCommentsComponent implements OnInit{
       this.pageNumber++;
       this.isLoading=true;
       this.commentsService
-        .getCommentsForPost(this.postId,this.pageNumber,this.pageSize,false)
+        .getCommentsForPost(this.postId,this.pageNumber,this.pageSize,this.orderByDateAscending)
         .subscribe(data=>{
         this.hasMore = data.length!=0;
         this.comments = this.comments.concat(data);
         this.isLoading=false;
       })
     }
+  }
+
+  onOrderChange(b: boolean) {
+    this.orderByDateAscending = b;
+    this.pageNumber=1;
+    this.isLoading=true;
+    this.hasMore = true;
+    this.commentsService.getCommentsForPost(this.postId,this.pageNumber,this.pageSize,this.orderByDateAscending).subscribe(data=>{
+      this.comments=data;
+      console.log(data)
+      this.isLoading=false;
+      this.hasMore=data.length!=0;
+    })
   }
 }

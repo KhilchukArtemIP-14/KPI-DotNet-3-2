@@ -1,7 +1,15 @@
+<div class="mb-3">
+  <label for="order-select">Order by date:</label>
+  <select id="order-select" class="form-select" (change)="onOrderChange(orderSelect.value === 'ascending')" #orderSelect>
+    <option value="descending">New first</option>
+    <option value="ascending">Old first</option>
+  </select>
+</div>
 <form [formGroup]="commentForm" (submit)="submit()">
   <textarea placeholder="Leave a comment" formControlName="comment" class="form-control" rows="5"></textarea>
   <button class="btn btn-primary mt-2" type="submit">Submit</button>
 </form>
+
 <p *ngIf="comments.length==0" class="text-secondary fs-5 mt-2">No comments yet...</p>
   <div class="card mt-2" *ngFor="let comment of comments">
     <h5 class="card-header fs-5"><a class="text-decoration-none" [routerLink]="['/users', comment.createdBy.userId]">{{comment.createdBy.userName}}</a><i class="bi bi-dot fs-5"></i>{{comment.dateCreated | date:'MM/dd/yyyy HH:mm'}}</h5>
