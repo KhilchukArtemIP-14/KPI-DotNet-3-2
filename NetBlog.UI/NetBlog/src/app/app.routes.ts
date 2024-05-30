@@ -8,6 +8,7 @@ import {LoginComponent} from "./Features/Auth/login/login.component";
 import {EditPostComponent} from "./Features/Posts/edit-post/edit-post.component";
 import {ViewProfileComponent} from "./Features/Users/view-profile/view-profile.component";
 import {EditProfileComponent} from "./Features/Users/edit-profile/edit-profile.component";
+import {authGuard} from "./Features/Auth/Guards/auth-guard";
 
 export const routes: Routes = [
   {
@@ -20,7 +21,11 @@ export const routes: Routes = [
   },
   {
     path:"posts/create",
-    component:CreatePostComponent
+    component:CreatePostComponent,
+    canActivate:[authGuard],
+    data: {
+      role: 'Author'
+    }
   },
   {
     path:"posts/:id",
@@ -28,7 +33,11 @@ export const routes: Routes = [
   },
   {
     path:"posts/:id/edit",
-    component:EditPostComponent
+    component:EditPostComponent,
+    canActivate:[authGuard],
+    data: {
+      role: 'Author'
+    }
   },
   {
     path:"register",
@@ -44,6 +53,7 @@ export const routes: Routes = [
   },
   {
     path:"users/:id/edit",
-    component:EditProfileComponent
+    component:EditProfileComponent,
+    canActivate:[authGuard]
   },
 ];
