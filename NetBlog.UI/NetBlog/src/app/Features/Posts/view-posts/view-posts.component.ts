@@ -29,6 +29,7 @@ export class ViewPostsComponent {
   public isLoading = true;
   public hasMore = true;
   private searchQuery: string | null = null;
+  private orderByDateAscending: boolean = false;
 
   ngOnInit(): void {
     this.postsService
@@ -49,7 +50,7 @@ export class ViewPostsComponent {
     if (!this.isLoading && this.hasMore && position >= height) {
       this.pageNumber++;
       this.isLoading=true;
-      this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,false).subscribe(data=>{
+      this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,this.orderByDateAscending).subscribe(data=>{
         this.hasMore = data.length!=0;
         this.posts = this.posts.concat(data);
         this.isLoading=false;
@@ -62,7 +63,20 @@ export class ViewPostsComponent {
     this.searchQuery = value;
     this.isLoading=true;
     this.hasMore = true;
-    this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,false).subscribe(data=>{
+    this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,this.orderByDateAscending).subscribe(data=>{
+      this.posts=data;
+      console.log(data)
+      this.isLoading=false;
+      this.hasMore=data.length!=0;
+    })
+  }
+
+  onOrderChange(b: boolean) {
+    this.orderByDateAscending = b;
+    this.pageNumber=1;
+    this.isLoading=true;
+    this.hasMore = true;
+    this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,this.orderByDateAscending).subscribe(data=>{
       this.posts=data;
       console.log(data)
       this.isLoading=false;
