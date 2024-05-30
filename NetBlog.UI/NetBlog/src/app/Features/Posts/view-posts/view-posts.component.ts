@@ -28,6 +28,7 @@ export class ViewPostsComponent {
   private pageNumber = 1;
   public isLoading = true;
   public hasMore = true;
+  private searchQuery: string | null = null;
 
   ngOnInit(): void {
     this.postsService
@@ -48,11 +49,24 @@ export class ViewPostsComponent {
     if (!this.isLoading && this.hasMore && position >= height) {
       this.pageNumber++;
       this.isLoading=true;
-      this.postsService.getPostSummaries(this.pageNumber,this.pageSize,null,false).subscribe(data=>{
+      this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,false).subscribe(data=>{
         this.hasMore = data.length!=0;
         this.posts = this.posts.concat(data);
         this.isLoading=false;
       })
     }
+  }
+
+  onSearch(value: string) {
+    this.pageNumber=1;
+    this.searchQuery = value;
+    this.isLoading=true;
+    this.hasMore = true;
+    this.postsService.getPostSummaries(this.pageNumber,this.pageSize,this.searchQuery,false).subscribe(data=>{
+      this.posts=data;
+      console.log(data)
+      this.isLoading=false;
+      this.hasMore=data.length!=0;
+    })
   }
 }
