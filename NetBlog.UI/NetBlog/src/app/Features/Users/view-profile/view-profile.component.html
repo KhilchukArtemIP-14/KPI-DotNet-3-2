@@ -11,6 +11,8 @@
       <p class="card-text fs-5">{{comment.commentText}}</p>
     </div>
   </div>
+  <button class="btn btn-primary mt-3" *ngIf="hasMoreComments" (click)="loadMoreComments()">Load more</button>
+
 
   <h3 class="mt-4">Users posts:</h3>
   <div *ngFor="let post of posts">
@@ -20,4 +22,5 @@
       </div>
     </div>
   </div>
+  <button class="btn btn-primary mt-3" *ngIf="hasMorePosts" (click)="loadMorePosts()">Load more</button>
 </div>

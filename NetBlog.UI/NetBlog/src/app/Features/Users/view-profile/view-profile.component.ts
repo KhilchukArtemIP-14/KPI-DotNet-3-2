@@ -37,7 +37,14 @@ export class ViewProfileComponent implements OnInit{
   public posts!:PostShortcutDTO[]
 
   public loadingPosts=true;
+  public hasMorePosts=true;
+  public postsPageSize = 5
+  public postsPageNumber = 1;
+
   public loadingComments = true;
+  public hasMoreComments=true;
+  public commentsPageSize = 5
+  public commentsPageNumber = 1;
 
   ngOnInit(): void {
       this.userId = this.route.snapshot.params['id'];
@@ -55,10 +62,29 @@ export class ViewProfileComponent implements OnInit{
       this.posts=data;
       this.loadingPosts=false
       console.log(this.posts)
-
     })
   }
   isAccountOwner(){
     return this.authService.getUser()?.userId==this.userId;
+  }
+
+  loadMoreComments() {
+    this.commentsPageNumber++;
+    this.commentsService.getShortcutsOfUser(this.userId,this.commentsPageNumber,this.commentsPageSize).subscribe(data=>{
+      this.comments= this.comments.concat(data);
+      this.hasMoreComments = data.length!=0;
+      this.loadingComments=false
+      console.log(this.comments)
+    })
+  }
+
+  loadMorePosts() {
+    this.postsPageNumber++;
+    this.postsService.getShortcutsOfUser(this.userId,this.postsPageNumber,this.postsPageSize).subscribe(data=>{
+      this.posts=this.posts.concat(data);
+      this.hasMorePosts=data.length!=0;
+      this.loadingPosts=false
+      console.log(this.posts)
+    })
   }
 }
