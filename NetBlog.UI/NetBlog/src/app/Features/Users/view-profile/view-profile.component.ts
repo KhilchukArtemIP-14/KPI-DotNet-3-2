@@ -56,25 +56,24 @@ export class ViewProfileComponent implements OnInit{
       this.commentsService.getShortcutsOfUser(this.userId).subscribe(data=>{
         this.comments=data;
         this.loadingComments=false
-        console.log(this.comments)
       })
     this.postsService.getShortcutsOfUser(this.userId).subscribe(data=>{
       this.posts=data;
       this.loadingPosts=false
-      console.log(this.posts)
     })
   }
   isAccountOwner(){
     return this.authService.getUser()?.userId==this.userId;
   }
-
+  isAuthor(){
+    return this.userData.roles.includes("Author");
+  }
   loadMoreComments() {
     this.commentsPageNumber++;
     this.commentsService.getShortcutsOfUser(this.userId,this.commentsPageNumber,this.commentsPageSize).subscribe(data=>{
       this.comments= this.comments.concat(data);
       this.hasMoreComments = data.length!=0;
       this.loadingComments=false
-      console.log(this.comments)
     })
   }
 
@@ -84,7 +83,6 @@ export class ViewProfileComponent implements OnInit{
       this.posts=this.posts.concat(data);
       this.hasMorePosts=data.length!=0;
       this.loadingPosts=false
-      console.log(this.posts)
     })
   }
 }

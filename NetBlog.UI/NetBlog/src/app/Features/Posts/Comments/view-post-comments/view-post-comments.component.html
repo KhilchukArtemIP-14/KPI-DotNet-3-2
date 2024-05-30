@@ -4,7 +4,7 @@
 </form>
 <p *ngIf="comments.length==0" class="text-secondary fs-5 mt-2">No comments yet...</p>
   <div class="card mt-2" *ngFor="let comment of comments">
-    <h5 class="card-header fs-5">{{comment.createdBy.userName}}<i class="bi bi-dot fs-5"></i>{{comment.dateCreated | date:'MM/dd/yyyy HH:mm'}}</h5>
+    <h5 class="card-header fs-5"><a class="text-decoration-none" [routerLink]="['/users', comment.createdBy.userId]">{{comment.createdBy.userName}}</a><i class="bi bi-dot fs-5"></i>{{comment.dateCreated | date:'MM/dd/yyyy HH:mm'}}</h5>
     <div class="card-body">
       <p class="card-text fs-5">{{comment.commentText}}</p>
       <button class="btn btn-danger" *ngIf="canDelete(comment)" (click)="delete(comment)">Delete</button>

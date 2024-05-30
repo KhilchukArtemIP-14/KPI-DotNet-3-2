@@ -14,13 +14,15 @@
   <button class="btn btn-primary mt-3" *ngIf="hasMoreComments" (click)="loadMoreComments()">Load more</button>
 
 
-  <h3 class="mt-4">Users posts:</h3>
-  <div *ngFor="let post of posts">
-    <div class="card mt-3">
-      <div class="card-body">
-        {{post.dateCreated| date:"dd.MM.YY"}} - <a [routerLink]="['posts',post.id]" class="text-decoration-none fw-bold">{{post.title}}</a>
+  <div *ngIf="isAuthor()">
+    <h3 class="mt-4">Users posts:</h3>
+    <div *ngFor="let post of posts">
+      <div class="card mt-3">
+        <div class="card-body">
+          {{post.dateCreated| date:"dd.MM.YY"}} - <a [routerLink]="['posts',post.id]" class="text-decoration-none fw-bold">{{post.title}}</a>
+        </div>
       </div>
     </div>
+    <button class="btn btn-primary mt-3" *ngIf="hasMorePosts" (click)="loadMorePosts()">Load more</button>
   </div>
-  <button class="btn btn-primary mt-3" *ngIf="hasMorePosts" (click)="loadMorePosts()">Load more</button>
 </div>

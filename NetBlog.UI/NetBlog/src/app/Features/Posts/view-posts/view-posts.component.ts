@@ -45,13 +45,11 @@ export class ViewPostsComponent {
   onScroll(): void {
     const position = window.scrollY + window.innerHeight;
     const height = document.documentElement.scrollHeight;
-    console.log(position, height)
     if (!this.isLoading && this.hasMore && position >= height) {
       this.pageNumber++;
       this.isLoading=true;
       this.postsService.getPostSummaries(this.pageNumber,this.pageSize,null,false).subscribe(data=>{
         this.hasMore = data.length!=0;
-        console.log(data)
         this.posts = this.posts.concat(data);
         this.isLoading=false;
       })

@@ -6,6 +6,7 @@ import {CommentDTO} from "../models/CommentDTO";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CreateCommentDTO} from "../models/CreateCommentDTO";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-view-post-comments',
@@ -14,7 +15,8 @@ import {CreateCommentDTO} from "../models/CreateCommentDTO";
     DatePipe,
     NgForOf,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './view-post-comments.component.html',
   styleUrl: './view-post-comments.component.css'
@@ -67,14 +69,13 @@ export class ViewPostCommentsComponent implements OnInit{
   onScroll(): void {
     const position = window.scrollY + window.innerHeight;
     const height = document.documentElement.scrollHeight;
-    console.log(this.pageSize)
-    console.log(position, height)
     if (!this.isLoading && this.hasMore && position >= height) {
       this.pageNumber++;
       this.isLoading=true;
-      this.commentsService.getCommentsForPost(this.postId,this.pageNumber,this.pageSize,false).subscribe(data=>{
+      this.commentsService
+        .getCommentsForPost(this.postId,this.pageNumber,this.pageSize,false)
+        .subscribe(data=>{
         this.hasMore = data.length!=0;
-        console.log(data)
         this.comments = this.comments.concat(data);
         this.isLoading=false;
       })
