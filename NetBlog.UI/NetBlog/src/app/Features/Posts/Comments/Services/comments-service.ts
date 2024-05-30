@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {CreateCommentDTO} from "../models/CreateCommentDTO";
 import {Observable} from "rxjs";
 import {environment} from "../../../../../environments/environment";
@@ -21,10 +21,21 @@ export class CommentsService {
     return this.http.delete<CommentDTO | string>(`${environment.apiBaseUrl}/api/comments/${commentId}`);
   }
 
-  getCommentsForPost(postId: string): Observable<CommentDTO[]> {
-    return this.http.get<CommentDTO[]>(`${environment.apiBaseUrl}/api/comments/post/${postId}`);
+  getCommentsForPost(postId: string, pageNumber: number = 1, pageSize: number = 5, orderByDateAscending: boolean = false): Observable<CommentDTO[]> {
+    const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString())
+      .set('orderByDateAscending', orderByDateAscending.toString());
+
+    return this.http.get<CommentDTO[]>(`${environment.apiBaseUrl}/api/comments/post/${postId}`, { params });
   }
-  getShortcutsOfUser(id: string): Observable<CommentShortcutDTO[]> {
-    return this.http.get<CommentShortcutDTO[]>(`${environment.apiBaseUrl}/api/comments/user/${id}`);
+
+  getShortcutsOfUser(userId: string, pageNumber: number = 1, pageSize: number = 5, orderByDateAscending: boolean = false): Observable<CommentShortcutDTO[]> {
+    const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString())
+      .set('orderByDateAscending', orderByDateAscending.toString());
+
+    return this.http.get<CommentShortcutDTO[]>(`${environment.apiBaseUrl}/api/comments/user/${userId}`, { params });
   }
 }

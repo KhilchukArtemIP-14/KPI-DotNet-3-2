@@ -62,9 +62,13 @@ namespace NetBlog.BAL.Services.PostsServices
             return _mapper.Map<List<PostShortcutDTO>>(data);
         }
 
-        public async Task<List<PostSummaryDTO>> GetSummaries(int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
+        public async Task<List<PostSummaryDTO>> GetSummaries(int pageNumber = 1, int pageSize = 5, string? searchTerm = null, bool orderByDateAscending = false)
         {
-            var entitites = await _repository.GetAll(pageNumber, pageSize);
+            BaseSpecification<Post> spec = searchTerm != null ?
+                new PostsWithSearchTermSpecification(searchTerm, orderByDateAscending):
+                new PostsOrderedByDateCreatedSpecification(orderByDateAscending);
+
+            var entitites = await _repository.GetAll(spec, pageNumber, pageSize);
 
             var result = _mapper.Map<List<PostSummaryDTO>>(entitites);
             foreach(var res in result)

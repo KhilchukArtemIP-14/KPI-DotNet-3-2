@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace NetBlog.DAL.Specifications.Implementations
 {
-    public class PostsWithStringSpecification:BaseSpecification<Post>
+    public class PostsWithSearchTermSpecification:BaseSpecification<Post>
     {
-        public PostsWithStringSpecification(string searchTerm, bool orderByAscending=false):base(p=>p.Title.Contains(searchTerm)||p.Content.Contains(searchTerm))
+        public PostsWithSearchTermSpecification(string searchTerm, bool orderByAscending=false):base(p=>p.Title.Contains(searchTerm)||p.Content.Contains(searchTerm))
         {
             AddOrderBy(p => p.DateCreated, orderByAscending);
         }

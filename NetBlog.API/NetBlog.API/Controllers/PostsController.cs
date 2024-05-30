@@ -46,25 +46,25 @@ namespace NetBlog.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id, [FromQuery] int commentsToLoad = 5)
         {
-            var post = await _postService.GetById(id);
+            var post = await _postService.GetById(id, commentsToLoad);
 
             if (post == null) return NotFound("Post not found");
 
             return Ok(post);
         }
         [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetPostShortcutsOfUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        public async Task<IActionResult> GetPostShortcutsOfUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] bool orderByDateAscending = false)
         {
-            var post = await _postService.GetPostShortcutsOfUser(userId, pageNumber, pageSize);
+            var post = await _postService.GetPostShortcutsOfUser(userId, pageNumber, pageSize, orderByDateAscending);
 
             if (post == null) return NotFound("Post not found");
 
             return Ok(post);
         }
         [HttpGet]
-        public async Task<IActionResult> GetPostSummaries([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        public async Task<IActionResult> GetPostSummaries([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] string? searchQuery = null,[FromQuery] bool orderByDateAscending = false)
         {
-            var postSummaries = await _postService.GetSummaries(pageNumber,pageSize);
+            var postSummaries = await _postService.GetSummaries(pageNumber,pageSize, searchQuery, orderByDateAscending);
             return Ok(postSummaries);
         }
 

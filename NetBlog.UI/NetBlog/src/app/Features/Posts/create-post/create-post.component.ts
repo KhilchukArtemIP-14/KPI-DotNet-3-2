@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PostsService} from "../services/PostService";
+import {PostsService} from "../services/post-service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CreatePostDTO} from "../models/CreatePostDTO";
 import {Router} from "@angular/router";

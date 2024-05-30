@@ -5,7 +5,7 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {UserSummaryDTO} from "../Models/user-summary-dto";
 import {ToastrService} from "ngx-toastr";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
-import {PostsService} from "../../Posts/services/PostService";
+import {PostsService} from "../../Posts/services/post-service";
 import {CommentsService} from "../../Posts/Comments/Services/comments-service";
 import {CommentShortcutDTO} from "../../Posts/Comments/models/CommentShortcutDTO";
 import {PostShortcutDTO} from "../../Posts/models/PostShortcutDTO";

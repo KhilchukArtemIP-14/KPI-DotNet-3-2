@@ -52,9 +52,9 @@ namespace NetBlog.BAL.Services.CommentsService
             return _mapper.Map<CommentDTO>(result);
         }
 
-        public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5)
+        public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
-            var spec = new CommentsForPostSpecification(postId);
+            var spec = new CommentsForPostSpecification(postId, orderByDateAscending);
 
             var comments = await _repository.GetAll(spec, pageNumber, pageSize);
             var result = _mapper.Map<List<CommentDTO>>(comments);
@@ -67,9 +67,9 @@ namespace NetBlog.BAL.Services.CommentsService
             return _mapper.Map<List<CommentDTO>>(result);
         }
 
-        public async Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5)
+        public async Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
-            var spec = new CommentsOfUserSpecification(userId);
+            var spec = new CommentsOfUserSpecification(userId, orderByDateAscending);
             var data = await _repository.GetAll(spec, pageNumber, pageSize);
 
             var result = _mapper.Map<List<CommentShortcutDTO>>(data);

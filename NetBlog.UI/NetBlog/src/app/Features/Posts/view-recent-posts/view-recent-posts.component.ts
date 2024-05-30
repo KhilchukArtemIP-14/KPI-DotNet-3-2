@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PostsService} from "../services/PostService";
+import {PostsService} from "../services/post-service";
 import {PostSummaryDTO} from "../models/PostSummaryDTO";
 import {DatePipe, NgForOf} from "@angular/common";
 

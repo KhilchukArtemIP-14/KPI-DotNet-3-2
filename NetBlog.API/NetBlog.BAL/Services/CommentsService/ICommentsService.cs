@@ -9,10 +9,10 @@ namespace NetBlog.BAL.Services.CommentsService
 {
     public interface ICommentsService
     {
-        public Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5);
+        public Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false);
         public Task<CommentDTO> CreateComment(CreateCommentDTO dto);
         public Task<CommentDTO> GetCommentById(Guid id);
-        public Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5);
+        public Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false);
 
         public Task<CommentDTO> DeleteComment(Guid commentId);
     }

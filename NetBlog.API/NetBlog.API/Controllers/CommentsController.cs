@@ -42,16 +42,16 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpGet("post/{postId}")]
-        public async Task<IActionResult> GetCommentsForPost(Guid postId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        public async Task<IActionResult> GetCommentsForPost(Guid postId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] bool orderByDateAscending = false)
         {
-            var comments = await _commentService.GetCommentsForPost(postId,pageNumber,pageSize);
+            var comments = await _commentService.GetCommentsForPost(postId,pageNumber,pageSize,orderByDateAscending);
             return Ok(comments);
         }
 
         [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetShortcutsForUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        public async Task<IActionResult> GetShortcutsForUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] bool orderByDateAscending = false)
         {
-            var comments = await _commentService.GetCommentShortuctsOfUser(userId, pageNumber, pageSize);
+            var comments = await _commentService.GetCommentShortuctsOfUser(userId, pageNumber, pageSize,orderByDateAscending);
             return Ok(comments);
         }
     }

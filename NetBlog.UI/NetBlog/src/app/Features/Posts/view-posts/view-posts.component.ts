@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {PostsService} from "../services/PostService";
+import {Component, HostListener} from '@angular/core';
+import {PostsService} from "../services/post-service";
 import {PostSummaryDTO} from "../models/PostSummaryDTO";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {AuthService} from "../../Auth/services/auth-service";
@@ -24,17 +24,37 @@ export class ViewPostsComponent {
                      private authService:AuthService) {
   }
   public posts:PostSummaryDTO[]=[]
+  private pageSize = 5;
+  private pageNumber = 1;
+  public isLoading = true;
+  public hasMore = true;
+
   ngOnInit(): void {
     this.postsService
       .getPostSummaries()
-      .subscribe(data=> this.posts=data)
+      .subscribe(data=> {
+        this.posts=data;
+        this.isLoading=false;
+      })
   }
   public isAuthor(){
     return this.authService.getUser()?.roles.includes("Author")
   }
-  public authoredPost(post:PostSummaryDTO){
-    return this.isAuthor()&&post.createdBy.userId==this.authService.getUser()?.userId
-  }
 
-  protected readonly state = state;
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const position = window.scrollY + window.innerHeight;
+    const height = document.documentElement.scrollHeight;
+    console.log(position, height)
+    if (!this.isLoading && this.hasMore && position >= height) {
+      this.pageNumber++;
+      this.isLoading=true;
+      this.postsService.getPostSummaries(this.pageNumber,this.pageSize,null,false).subscribe(data=>{
+        this.hasMore = data.length!=0;
+        console.log(data)
+        this.posts = this.posts.concat(data);
+        this.isLoading=false;
+      })
+    }
+  }
 }

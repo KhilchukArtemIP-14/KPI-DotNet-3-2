@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {PostDTO} from "../models/PostDTO";
-import {PostsService} from "../services/PostService";
+import {PostsService} from "../services/post-service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {AuthService} from "../../Auth/services/auth-service";

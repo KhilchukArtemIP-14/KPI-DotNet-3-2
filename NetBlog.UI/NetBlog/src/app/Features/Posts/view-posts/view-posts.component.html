@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (scroll)="onScroll()">
   <h3 class="mt-2">All posts:</h3>
   <a *ngIf="isAuthor()" class="btn btn-success" [routerLink]="['create']">Create post</a>
   <div class="input-group mb-3 mt-3">

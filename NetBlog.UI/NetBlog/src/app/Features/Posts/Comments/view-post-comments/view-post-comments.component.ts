@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {CommentsService} from "../Services/comments-service";
 import {AuthService} from "../../../Auth/services/auth-service";
@@ -27,9 +27,14 @@ export class ViewPostCommentsComponent implements OnInit{
   }
   @Input() comments!:CommentDTO[]
   @Input() postId!:string
+  private pageSize!:number;
+  private pageNumber = 1;
+  public isLoading = false;
+  public hasMore = true;
 
   public commentForm!: FormGroup;
   ngOnInit(): void {
+    this.pageSize=this.comments.length;
         this.commentForm=this.fb.group({
           comment:["", Validators.required]
         })
@@ -52,9 +57,27 @@ export class ViewPostCommentsComponent implements OnInit{
       authorId: this.authService.getUser()?.userId,
       commentText: this.commentForm.controls['comment'].value
     } as CreateCommentDTO
+    this.commentForm.controls['comment'].reset()
     this.commentsService.createComment(dto).subscribe(data=>{
-      this.comments.push(data)
+      this.comments.unshift(data)
       this.toastr.success("Comment added successfully")
     })
+  }
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const position = window.scrollY + window.innerHeight;
+    const height = document.documentElement.scrollHeight;
+    console.log(this.pageSize)
+    console.log(position, height)
+    if (!this.isLoading && this.hasMore && position >= height) {
+      this.pageNumber++;
+      this.isLoading=true;
+      this.commentsService.getCommentsForPost(this.postId,this.pageNumber,this.pageSize,false).subscribe(data=>{
+        this.hasMore = data.length!=0;
+        console.log(data)
+        this.comments = this.comments.concat(data);
+        this.isLoading=false;
+      })
+    }
   }
 }
