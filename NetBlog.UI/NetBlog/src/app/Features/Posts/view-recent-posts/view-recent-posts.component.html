@@ -10,4 +10,12 @@
       </div>
     </div>
   </div>
+  <div [hidden]="!isLoading"
+       class="text-center mb-3">
+    <div class="col mt-3">
+      <div class="spinner-border text-primary" role="status">
+      </div>
+      <p class="sr-only">Calculating...</p>
+    </div>
+  </div>
 </div>
