@@ -19,6 +19,7 @@ namespace NetBlog.API.Authorization
             Guid postId)
         {
             var entity = await _postService.GetById(postId);
+            if (entity == null) context.Succeed(requirement); // no post no problems XD
             var userIdClaim = context.User.FindFirst("userId");
             if (context.User.IsInRole("Author")
                 && userIdClaim != null
