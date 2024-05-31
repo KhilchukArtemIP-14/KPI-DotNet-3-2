@@ -42,6 +42,7 @@ namespace NetBlog.BAL.Services.PostsServices
 
         public async Task<PostDTO> GetById(Guid id, int commentsToLoad = 5)
         {
+            if (commentsToLoad < 1) return null;
             var spec = new PostWithCommentsSpecification(commentsToLoad);
             var entity = await _repository.Get(id, spec);
 
@@ -51,12 +52,13 @@ namespace NetBlog.BAL.Services.PostsServices
             {
                 comment.CreatedBy = await _userSummaryService.GetUserShortcut(comment.CreatedBy.UserId);
             }
-            return _mapper.Map<PostDTO>(result);
+            return result;
         }
 
         public async Task<List<PostShortcutDTO>> GetPostShortcutsOfUser(string userId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
-            var spec = new PostsOfUserSpecification(userId);
+            if (pageNumber < 1 || pageSize < 1) return null;
+            var spec = new PostsOfUserSpecification(userId, orderByDateAscending);
             var data = await _repository.GetAll(spec, pageNumber, pageSize);
 
             return _mapper.Map<List<PostShortcutDTO>>(data);
@@ -64,6 +66,7 @@ namespace NetBlog.BAL.Services.PostsServices
 
         public async Task<List<PostSummaryDTO>> GetSummaries(int pageNumber = 1, int pageSize = 5, string? searchTerm = null, bool orderByDateAscending = false)
         {
+            if (pageNumber < 1 || pageSize < 1) return null;
             BaseSpecification<Post> spec = searchTerm != null ?
                 new PostsWithSearchTermSpecification(searchTerm, orderByDateAscending):
                 new PostsOrderedByDateCreatedSpecification(orderByDateAscending);
@@ -76,7 +79,7 @@ namespace NetBlog.BAL.Services.PostsServices
                 res.CreatedBy = await _userSummaryService.GetUserShortcut(res.CreatedBy.UserId);
             }
 
-            return _mapper.Map<List<PostSummaryDTO>>(result);
+            return result;
         }
 
         public async Task<PostDTO> Update(Guid id, UpdatePostDTO dto)

@@ -54,6 +54,7 @@ namespace NetBlog.BAL.Services.CommentsService
 
         public async Task<List<CommentDTO>> GetCommentsForPost(Guid postId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
+            if (pageNumber < 1 || pageSize < 1) return null;
             var spec = new CommentsForPostSpecification(postId, orderByDateAscending);
 
             var comments = await _repository.GetAll(spec, pageNumber, pageSize);
@@ -64,11 +65,12 @@ namespace NetBlog.BAL.Services.CommentsService
                 res.CreatedBy = await _userSummaryService.GetUserShortcut(res.CreatedBy.UserId);
             }
 
-            return _mapper.Map<List<CommentDTO>>(result);
+            return result;
         }
 
         public async Task<List<CommentShortcutDTO>> GetCommentShortuctsOfUser(string userId, int pageNumber = 1, int pageSize = 5, bool orderByDateAscending = false)
         {
+            if (pageNumber < 1 || pageSize < 1) return null;
             var spec = new CommentsOfUserSpecification(userId, orderByDateAscending);
             var data = await _repository.GetAll(spec, pageNumber, pageSize);
 

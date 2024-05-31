@@ -52,6 +52,7 @@ namespace NetBlog.DAL.Repositories
 
         public Task<List<T>> GetAll(int pageNumber = 1, int pageSize = 5)
         {
+            if (pageNumber < 1 || pageSize < 1) return Task.FromResult(new List<T>());
             return _context
                 .Set<T>()
                 .Where(t => !t.IsDeleted)
@@ -62,6 +63,7 @@ namespace NetBlog.DAL.Repositories
 
         public Task<List<T>> GetAll(ISpecification<T> specification, int pageNumber = 1, int pageSize = 5)
         {
+            if (pageNumber < 1 || pageSize < 1) return Task.FromResult(new List<T>());
             return ApplySpecifications(_context.Set<T>().AsQueryable(),specification)
                 .Where(t => !t.IsDeleted)
                 .Skip((pageNumber - 1) * pageSize)

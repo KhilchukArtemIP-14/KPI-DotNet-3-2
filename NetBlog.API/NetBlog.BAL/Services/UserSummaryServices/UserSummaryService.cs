@@ -34,27 +34,31 @@ namespace NetBlog.BAL.Services.UserSummaryServices
         public async Task<UserSummaryDTO> GetUserSummary(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            var bioClaim = (await _userManager.GetClaimsAsync(user))
-                    .FirstOrDefault(c => c.Type == "bio");
+            
 
-            if (user != null&& bioClaim!=null)
+            if (user != null)
             {
-                var summary = new UserSummaryDTO()
+                var bioClaim = (await _userManager.GetClaimsAsync(user))
+                    .FirstOrDefault(c => c.Type == "bio");
+                if (bioClaim != null)
                 {
-                    Id = id,
-                    Name = user.UserName,
-                    Email = user.Email,
-                    Roles = (await _userManager.GetRolesAsync(user)).ToArray(),
-                    Bio=bioClaim.Value
-                };
-                return summary;
-            }
+                    var summary = new UserSummaryDTO()
+                    {
+                        Id = id,
+                        Name = user.UserName,
+                        Email = user.Email,
+                        Roles = (await _userManager.GetRolesAsync(user)).ToArray(),
+                        Bio = bioClaim.Value
+                    };
+                    return summary;
+                }            }
 
             return null;
         }
 
         public async Task<UserSummaryDTO> UpdateUserSummaryById(UpdateUserDTO dto, string userId)
         {
+            if (dto.Name == null || dto.Bio == null) return null;
             IdentityUser user = await _userManager.FindByIdAsync(userId);
 
             if (user != null)
