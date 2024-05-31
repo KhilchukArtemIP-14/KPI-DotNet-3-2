@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 using NetBlog.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetBlog.Common.Mappings
+namespace NetBlog.BAL.Mappings
 {
     public class AutoMapperProfile: Profile
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetBlog.BAL.Services.PostsServices;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 
 namespace NetBlog.API.Controllers
 {

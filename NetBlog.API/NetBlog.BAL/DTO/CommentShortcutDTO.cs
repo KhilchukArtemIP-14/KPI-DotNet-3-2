@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetBlog.Common.DTO
+namespace NetBlog.BAL.DTO
 {
     public class CommentShortcutDTO
     {
