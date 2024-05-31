@@ -10,7 +10,7 @@ using NetBlog.BAL.Services.CommentsService;
 using NetBlog.BAL.Services.PostsServices;
 using NetBlog.BAL.Services.UserSummaryService;
 using NetBlog.BAL.Services.UserSummaryServices;
-using NetBlog.Common.Mappings;
+using NetBlog.BAL.Mappings;
 using NetBlog.DAL.Data;
 using NetBlog.DAL.Repositories;
 using System.Reflection;

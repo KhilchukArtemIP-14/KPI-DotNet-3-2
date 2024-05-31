@@ -361,9 +361,9 @@ BRH:12
 FNF:4
 FNH:4
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\Mappings\AutoMapperProfile.cs
-FN:13,System.Void NetBlog.Common.Mappings.AutoMapperProfile::.ctor()
-FNDA:8,System.Void NetBlog.Common.Mappings.AutoMapperProfile::.ctor()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\Mappings\AutoMapperProfile.cs
+FN:13,System.Void NetBlog.BAL.Mappings.AutoMapperProfile::.ctor()
+FNDA:8,System.Void NetBlog.BAL.Mappings.AutoMapperProfile::.ctor()
 DA:14,8
 DA:15,8
 DA:16,8
@@ -391,18 +391,18 @@ BRH:0
 FNF:1
 FNH:1
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CommentDTO.cs
-FN:10,System.Guid NetBlog.Common.DTO.CommentDTO::get_Id()
-FNDA:24,System.Guid NetBlog.Common.DTO.CommentDTO::get_Id()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\CommentDTO.cs
+FN:10,System.Guid NetBlog.BAL.DTO.CommentDTO::get_Id()
+FNDA:24,System.Guid NetBlog.BAL.DTO.CommentDTO::get_Id()
 DA:11,24
-FN:11,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.CommentDTO::get_CreatedBy()
-FNDA:19,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.CommentDTO::get_CreatedBy()
+FN:11,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.CommentDTO::get_CreatedBy()
+FNDA:19,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.CommentDTO::get_CreatedBy()
 DA:12,19
-FN:12,System.String NetBlog.Common.DTO.CommentDTO::get_CommentText()
-FNDA:15,System.String NetBlog.Common.DTO.CommentDTO::get_CommentText()
+FN:12,System.String NetBlog.BAL.DTO.CommentDTO::get_CommentText()
+FNDA:15,System.String NetBlog.BAL.DTO.CommentDTO::get_CommentText()
 DA:13,15
-FN:13,System.DateTime NetBlog.Common.DTO.CommentDTO::get_DateCreated()
-FNDA:3,System.DateTime NetBlog.Common.DTO.CommentDTO::get_DateCreated()
+FN:13,System.DateTime NetBlog.BAL.DTO.CommentDTO::get_DateCreated()
+FNDA:3,System.DateTime NetBlog.BAL.DTO.CommentDTO::get_DateCreated()
 DA:14,3
 LF:4
 LH:4
@@ -411,15 +411,15 @@ BRH:0
 FNF:4
 FNH:4
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CommentShortcutDTO.cs
-FN:10,System.Guid NetBlog.Common.DTO.CommentShortcutDTO::get_PostId()
-FNDA:8,System.Guid NetBlog.Common.DTO.CommentShortcutDTO::get_PostId()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\CommentShortcutDTO.cs
+FN:10,System.Guid NetBlog.BAL.DTO.CommentShortcutDTO::get_PostId()
+FNDA:8,System.Guid NetBlog.BAL.DTO.CommentShortcutDTO::get_PostId()
 DA:11,8
-FN:11,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_PostTitle()
-FNDA:4,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_PostTitle()
+FN:11,System.String NetBlog.BAL.DTO.CommentShortcutDTO::get_PostTitle()
+FNDA:4,System.String NetBlog.BAL.DTO.CommentShortcutDTO::get_PostTitle()
 DA:12,4
-FN:12,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_CommentText()
-FNDA:4,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_CommentText()
+FN:12,System.String NetBlog.BAL.DTO.CommentShortcutDTO::get_CommentText()
+FNDA:4,System.String NetBlog.BAL.DTO.CommentShortcutDTO::get_CommentText()
 DA:13,4
 LF:3
 LH:3
@@ -428,15 +428,15 @@ BRH:0
 FNF:3
 FNH:3
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CreateCommentDTO.cs
-FN:10,System.Guid NetBlog.Common.DTO.CreateCommentDTO::get_PostId()
-FNDA:5,System.Guid NetBlog.Common.DTO.CreateCommentDTO::get_PostId()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\CreateCommentDTO.cs
+FN:10,System.Guid NetBlog.BAL.DTO.CreateCommentDTO::get_PostId()
+FNDA:5,System.Guid NetBlog.BAL.DTO.CreateCommentDTO::get_PostId()
 DA:11,5
-FN:11,System.String NetBlog.Common.DTO.CreateCommentDTO::get_AuthorId()
-FNDA:9,System.String NetBlog.Common.DTO.CreateCommentDTO::get_AuthorId()
+FN:11,System.String NetBlog.BAL.DTO.CreateCommentDTO::get_AuthorId()
+FNDA:9,System.String NetBlog.BAL.DTO.CreateCommentDTO::get_AuthorId()
 DA:12,9
-FN:12,System.String NetBlog.Common.DTO.CreateCommentDTO::get_CommentText()
-FNDA:4,System.String NetBlog.Common.DTO.CreateCommentDTO::get_CommentText()
+FN:12,System.String NetBlog.BAL.DTO.CreateCommentDTO::get_CommentText()
+FNDA:4,System.String NetBlog.BAL.DTO.CreateCommentDTO::get_CommentText()
 DA:13,4
 LF:3
 LH:3
@@ -445,18 +445,18 @@ BRH:0
 FNF:3
 FNH:3
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CreatePostDTO.cs
-FN:10,System.String NetBlog.Common.DTO.CreatePostDTO::get_Title()
-FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_Title()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\CreatePostDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.CreatePostDTO::get_Title()
+FNDA:4,System.String NetBlog.BAL.DTO.CreatePostDTO::get_Title()
 DA:11,4
-FN:11,System.String NetBlog.Common.DTO.CreatePostDTO::get_ContentPreview()
-FNDA:3,System.String NetBlog.Common.DTO.CreatePostDTO::get_ContentPreview()
+FN:11,System.String NetBlog.BAL.DTO.CreatePostDTO::get_ContentPreview()
+FNDA:3,System.String NetBlog.BAL.DTO.CreatePostDTO::get_ContentPreview()
 DA:12,3
-FN:12,System.String NetBlog.Common.DTO.CreatePostDTO::get_Content()
-FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_Content()
+FN:12,System.String NetBlog.BAL.DTO.CreatePostDTO::get_Content()
+FNDA:4,System.String NetBlog.BAL.DTO.CreatePostDTO::get_Content()
 DA:13,4
-FN:13,System.String NetBlog.Common.DTO.CreatePostDTO::get_CreatedBy()
-FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_CreatedBy()
+FN:13,System.String NetBlog.BAL.DTO.CreatePostDTO::get_CreatedBy()
+FNDA:4,System.String NetBlog.BAL.DTO.CreatePostDTO::get_CreatedBy()
 DA:14,4
 LF:4
 LH:4
@@ -465,21 +465,21 @@ BRH:0
 FNF:4
 FNH:4
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\LoginResponseDTO.cs
-FN:10,System.String NetBlog.Common.DTO.LoginResponseDTO::get_UserId()
-FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_UserId()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\LoginResponseDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_UserId()
+FNDA:1,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_UserId()
 DA:11,1
-FN:11,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Name()
-FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Name()
+FN:11,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Name()
+FNDA:1,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Name()
 DA:12,1
-FN:12,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Email()
-FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Email()
+FN:12,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Email()
+FNDA:1,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Email()
 DA:13,1
-FN:13,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Token()
-FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Token()
+FN:13,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Token()
+FNDA:1,System.String NetBlog.BAL.DTO.LoginResponseDTO::get_Token()
 DA:14,1
-FN:14,System.String[] NetBlog.Common.DTO.LoginResponseDTO::get_Roles()
-FNDA:1,System.String[] NetBlog.Common.DTO.LoginResponseDTO::get_Roles()
+FN:14,System.String[] NetBlog.BAL.DTO.LoginResponseDTO::get_Roles()
+FNDA:1,System.String[] NetBlog.BAL.DTO.LoginResponseDTO::get_Roles()
 DA:15,1
 LF:5
 LH:5
@@ -488,12 +488,12 @@ BRH:0
 FNF:5
 FNH:5
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\LoginUserDTO.cs
-FN:10,System.String NetBlog.Common.DTO.LoginUserDTO::get_Email()
-FNDA:4,System.String NetBlog.Common.DTO.LoginUserDTO::get_Email()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\LoginUserDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.LoginUserDTO::get_Email()
+FNDA:4,System.String NetBlog.BAL.DTO.LoginUserDTO::get_Email()
 DA:11,4
-FN:11,System.String NetBlog.Common.DTO.LoginUserDTO::get_Password()
-FNDA:3,System.String NetBlog.Common.DTO.LoginUserDTO::get_Password()
+FN:11,System.String NetBlog.BAL.DTO.LoginUserDTO::get_Password()
+FNDA:3,System.String NetBlog.BAL.DTO.LoginUserDTO::get_Password()
 DA:12,3
 LF:2
 LH:2
@@ -502,30 +502,30 @@ BRH:0
 FNF:2
 FNH:2
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostDTO.cs
-FN:10,System.Guid NetBlog.Common.DTO.PostDTO::get_Id()
-FNDA:14,System.Guid NetBlog.Common.DTO.PostDTO::get_Id()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\PostDTO.cs
+FN:10,System.Guid NetBlog.BAL.DTO.PostDTO::get_Id()
+FNDA:14,System.Guid NetBlog.BAL.DTO.PostDTO::get_Id()
 DA:11,14
-FN:11,System.String NetBlog.Common.DTO.PostDTO::get_Title()
-FNDA:14,System.String NetBlog.Common.DTO.PostDTO::get_Title()
+FN:11,System.String NetBlog.BAL.DTO.PostDTO::get_Title()
+FNDA:14,System.String NetBlog.BAL.DTO.PostDTO::get_Title()
 DA:12,14
-FN:12,System.String NetBlog.Common.DTO.PostDTO::get_ContentPreview()
-FNDA:2,System.String NetBlog.Common.DTO.PostDTO::get_ContentPreview()
+FN:12,System.String NetBlog.BAL.DTO.PostDTO::get_ContentPreview()
+FNDA:2,System.String NetBlog.BAL.DTO.PostDTO::get_ContentPreview()
 DA:13,2
-FN:13,System.String NetBlog.Common.DTO.PostDTO::get_Content()
-FNDA:14,System.String NetBlog.Common.DTO.PostDTO::get_Content()
+FN:13,System.String NetBlog.BAL.DTO.PostDTO::get_Content()
+FNDA:14,System.String NetBlog.BAL.DTO.PostDTO::get_Content()
 DA:14,14
-FN:14,System.DateTime NetBlog.Common.DTO.PostDTO::get_DateCreated()
-FNDA:2,System.DateTime NetBlog.Common.DTO.PostDTO::get_DateCreated()
+FN:14,System.DateTime NetBlog.BAL.DTO.PostDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.BAL.DTO.PostDTO::get_DateCreated()
 DA:15,2
-FN:15,System.Nullable`1<System.DateTime> NetBlog.Common.DTO.PostDTO::get_DateUpdated()
-FNDA:2,System.Nullable`1<System.DateTime> NetBlog.Common.DTO.PostDTO::get_DateUpdated()
+FN:15,System.Nullable`1<System.DateTime> NetBlog.BAL.DTO.PostDTO::get_DateUpdated()
+FNDA:2,System.Nullable`1<System.DateTime> NetBlog.BAL.DTO.PostDTO::get_DateUpdated()
 DA:16,2
-FN:16,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostDTO::get_CreatedBy()
-FNDA:10,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostDTO::get_CreatedBy()
+FN:16,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.PostDTO::get_CreatedBy()
+FNDA:10,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.PostDTO::get_CreatedBy()
 DA:17,10
-FN:17,System.Collections.Generic.IEnumerable`1<NetBlog.Common.DTO.CommentDTO> NetBlog.Common.DTO.PostDTO::get_Comments()
-FNDA:7,System.Collections.Generic.IEnumerable`1<NetBlog.Common.DTO.CommentDTO> NetBlog.Common.DTO.PostDTO::get_Comments()
+FN:17,System.Collections.Generic.IEnumerable`1<NetBlog.BAL.DTO.CommentDTO> NetBlog.BAL.DTO.PostDTO::get_Comments()
+FNDA:7,System.Collections.Generic.IEnumerable`1<NetBlog.BAL.DTO.CommentDTO> NetBlog.BAL.DTO.PostDTO::get_Comments()
 DA:18,7
 LF:8
 LH:8
@@ -534,15 +534,15 @@ BRH:0
 FNF:8
 FNH:8
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostShortcutDTO.cs
-FN:11,System.Guid NetBlog.Common.DTO.PostShortcutDTO::get_Id()
-FNDA:8,System.Guid NetBlog.Common.DTO.PostShortcutDTO::get_Id()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\PostShortcutDTO.cs
+FN:11,System.Guid NetBlog.BAL.DTO.PostShortcutDTO::get_Id()
+FNDA:8,System.Guid NetBlog.BAL.DTO.PostShortcutDTO::get_Id()
 DA:12,8
-FN:12,System.String NetBlog.Common.DTO.PostShortcutDTO::get_Title()
-FNDA:4,System.String NetBlog.Common.DTO.PostShortcutDTO::get_Title()
+FN:12,System.String NetBlog.BAL.DTO.PostShortcutDTO::get_Title()
+FNDA:4,System.String NetBlog.BAL.DTO.PostShortcutDTO::get_Title()
 DA:13,4
-FN:13,System.DateTime NetBlog.Common.DTO.PostShortcutDTO::get_DateCreated()
-FNDA:2,System.DateTime NetBlog.Common.DTO.PostShortcutDTO::get_DateCreated()
+FN:13,System.DateTime NetBlog.BAL.DTO.PostShortcutDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.BAL.DTO.PostShortcutDTO::get_DateCreated()
 DA:14,2
 LF:3
 LH:3
@@ -551,21 +551,21 @@ BRH:0
 FNF:3
 FNH:3
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostSummaryDTO.cs
-FN:10,System.Guid NetBlog.Common.DTO.PostSummaryDTO::get_Id()
-FNDA:14,System.Guid NetBlog.Common.DTO.PostSummaryDTO::get_Id()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\PostSummaryDTO.cs
+FN:10,System.Guid NetBlog.BAL.DTO.PostSummaryDTO::get_Id()
+FNDA:14,System.Guid NetBlog.BAL.DTO.PostSummaryDTO::get_Id()
 DA:11,14
-FN:11,System.String NetBlog.Common.DTO.PostSummaryDTO::get_Title()
-FNDA:6,System.String NetBlog.Common.DTO.PostSummaryDTO::get_Title()
+FN:11,System.String NetBlog.BAL.DTO.PostSummaryDTO::get_Title()
+FNDA:6,System.String NetBlog.BAL.DTO.PostSummaryDTO::get_Title()
 DA:12,6
-FN:12,System.String NetBlog.Common.DTO.PostSummaryDTO::get_ContentPreview()
-FNDA:2,System.String NetBlog.Common.DTO.PostSummaryDTO::get_ContentPreview()
+FN:12,System.String NetBlog.BAL.DTO.PostSummaryDTO::get_ContentPreview()
+FNDA:2,System.String NetBlog.BAL.DTO.PostSummaryDTO::get_ContentPreview()
 DA:13,2
-FN:13,System.DateTime NetBlog.Common.DTO.PostSummaryDTO::get_DateCreated()
-FNDA:2,System.DateTime NetBlog.Common.DTO.PostSummaryDTO::get_DateCreated()
+FN:13,System.DateTime NetBlog.BAL.DTO.PostSummaryDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.BAL.DTO.PostSummaryDTO::get_DateCreated()
 DA:14,2
-FN:14,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostSummaryDTO::get_CreatedBy()
-FNDA:14,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostSummaryDTO::get_CreatedBy()
+FN:14,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.PostSummaryDTO::get_CreatedBy()
+FNDA:14,NetBlog.BAL.DTO.UserShortcutDTO NetBlog.BAL.DTO.PostSummaryDTO::get_CreatedBy()
 DA:15,14
 LF:5
 LH:5
@@ -574,18 +574,18 @@ BRH:0
 FNF:5
 FNH:5
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\RegisterUserDTO.cs
-FN:10,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Name()
-FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Name()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\RegisterUserDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Name()
+FNDA:4,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Name()
 DA:11,4
-FN:11,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Email()
-FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Email()
+FN:11,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Email()
+FNDA:4,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Email()
 DA:12,4
-FN:12,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Password()
-FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Password()
+FN:12,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Password()
+FNDA:4,System.String NetBlog.BAL.DTO.RegisterUserDTO::get_Password()
 DA:13,4
-FN:13,System.String[] NetBlog.Common.DTO.RegisterUserDTO::get_Roles()
-FNDA:4,System.String[] NetBlog.Common.DTO.RegisterUserDTO::get_Roles()
+FN:13,System.String[] NetBlog.BAL.DTO.RegisterUserDTO::get_Roles()
+FNDA:4,System.String[] NetBlog.BAL.DTO.RegisterUserDTO::get_Roles()
 DA:14,4
 LF:4
 LH:4
@@ -594,15 +594,15 @@ BRH:0
 FNF:4
 FNH:4
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UpdatePostDTO.cs
-FN:10,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Title()
-FNDA:5,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Title()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\UpdatePostDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_Title()
+FNDA:5,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_Title()
 DA:11,5
-FN:11,System.String NetBlog.Common.DTO.UpdatePostDTO::get_ContentPreview()
-FNDA:3,System.String NetBlog.Common.DTO.UpdatePostDTO::get_ContentPreview()
+FN:11,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_ContentPreview()
+FNDA:3,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_ContentPreview()
 DA:12,3
-FN:12,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Content()
-FNDA:5,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Content()
+FN:12,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_Content()
+FNDA:5,System.String NetBlog.BAL.DTO.UpdatePostDTO::get_Content()
 DA:13,5
 LF:3
 LH:3
@@ -611,12 +611,12 @@ BRH:0
 FNF:3
 FNH:3
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UpdateUserDTO.cs
-FN:10,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Name()
-FNDA:6,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Name()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\UpdateUserDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.UpdateUserDTO::get_Name()
+FNDA:6,System.String NetBlog.BAL.DTO.UpdateUserDTO::get_Name()
 DA:11,6
-FN:11,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Bio()
-FNDA:6,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Bio()
+FN:11,System.String NetBlog.BAL.DTO.UpdateUserDTO::get_Bio()
+FNDA:6,System.String NetBlog.BAL.DTO.UpdateUserDTO::get_Bio()
 DA:12,6
 LF:2
 LH:2
@@ -625,12 +625,12 @@ BRH:0
 FNF:2
 FNH:2
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UserShortcutDTO.cs
-FN:10,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserId()
-FNDA:42,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserId()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\UserShortcutDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.UserShortcutDTO::get_UserId()
+FNDA:42,System.String NetBlog.BAL.DTO.UserShortcutDTO::get_UserId()
 DA:11,42
-FN:11,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserName()
-FNDA:7,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserName()
+FN:11,System.String NetBlog.BAL.DTO.UserShortcutDTO::get_UserName()
+FNDA:7,System.String NetBlog.BAL.DTO.UserShortcutDTO::get_UserName()
 DA:12,7
 LF:2
 LH:2
@@ -639,21 +639,21 @@ BRH:0
 FNF:2
 FNH:2
 end_of_record
-SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UserSummaryDTO.cs
-FN:10,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Id()
-FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Id()
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\DTO\UserSummaryDTO.cs
+FN:10,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Id()
+FNDA:2,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Id()
 DA:11,2
-FN:11,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Name()
-FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Name()
+FN:11,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Name()
+FNDA:2,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Name()
 DA:12,2
-FN:12,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Email()
-FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Email()
+FN:12,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Email()
+FNDA:2,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Email()
 DA:13,2
-FN:13,System.String[] NetBlog.Common.DTO.UserSummaryDTO::get_Roles()
-FNDA:2,System.String[] NetBlog.Common.DTO.UserSummaryDTO::get_Roles()
+FN:13,System.String[] NetBlog.BAL.DTO.UserSummaryDTO::get_Roles()
+FNDA:2,System.String[] NetBlog.BAL.DTO.UserSummaryDTO::get_Roles()
 DA:14,2
-FN:14,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Bio()
-FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Bio()
+FN:14,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Bio()
+FNDA:2,System.String NetBlog.BAL.DTO.UserSummaryDTO::get_Bio()
 DA:15,2
 LF:5
 LH:5

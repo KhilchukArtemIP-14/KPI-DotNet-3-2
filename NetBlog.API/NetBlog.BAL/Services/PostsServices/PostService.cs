@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using NetBlog.BAL.Services.UserSummaryService;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 using NetBlog.DAL.Models;
 using NetBlog.DAL.Repositories;
 using NetBlog.DAL.Specifications.Implementations;

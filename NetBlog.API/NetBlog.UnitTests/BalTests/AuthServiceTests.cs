@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Moq;
 using NetBlog.BAL.Services.AuthServices;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

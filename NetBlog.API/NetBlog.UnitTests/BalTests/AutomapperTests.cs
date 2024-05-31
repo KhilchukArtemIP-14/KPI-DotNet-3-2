@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using NetBlog.Common.DTO;
-using NetBlog.Common.Mappings;
+using NetBlog.BAL.DTO;
+using NetBlog.BAL.Mappings;
 using NetBlog.DAL.Models;
 using System;
 using System.Collections.Generic;

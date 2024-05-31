@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using NetBlog.BAL.Services.PostsServices;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 using NetBlog.DAL.Repositories;
 
 namespace NetBlog.API.Authorization

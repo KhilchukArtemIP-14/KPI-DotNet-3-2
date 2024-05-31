@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetBlog.Common.DTO
+namespace NetBlog.BAL.DTO
 {
-    public class PostSummaryDTO
+    public class CreatePostDTO
     {
-        public Guid Id { get; set; }
         public string Title { get; set; }
         public string ContentPreview { get; set; }
-        public DateTime DateCreated { get; set; }
-        public UserShortcutDTO CreatedBy { get; set; }
+        public string Content { get; set; }
+        public string CreatedBy { get; set; }
     }
 }

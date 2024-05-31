@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetBlog.BAL\NetBlog.BAL.csproj" />
-    <ProjectReference Include="..\NetBlog.Common\NetBlog.Common.csproj" />
     <ProjectReference Include="..\NetBlog.DAL\NetBlog.DAL.csproj" />
   </ItemGroup>
 	<PropertyGroup>

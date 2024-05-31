@@ -24,10 +24,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetBlog.BAL\NetBlog.BAL.csproj" />
-    <ProjectReference Include="..\NetBlog.Common\NetBlog.Common.csproj" />
     <ProjectReference Include="..\NetBlog.DAL\NetBlog.DAL.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<InternalsVisibleTo Include="NetBlog.IntegrationTests"/>
+		<InternalsVisibleTo Include="NetBlog.IntegrationTests" />
 	</ItemGroup>
 </Project>

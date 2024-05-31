@@ -1,5 +1,5 @@
 ﻿using NetBlog.BAL.Services.UserSummaryServices;
-using NetBlog.Common.DTO;
+using NetBlog.BAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
