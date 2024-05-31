@@ -1,0 +1,1002 @@
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\Services\UserSummaryServices\UserSummaryService.cs
+FN:15,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<Microsoft.AspNetCore.Identity.IdentityUser>)
+FNDA:5,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<Microsoft.AspNetCore.Identity.IdentityUser>)
+DA:16,5
+DA:17,5
+DA:18,5
+DA:19,5
+FN:37,System.Boolean NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<>c::<GetUserSummary>b__3_0(System.Security.Claims.Claim)
+FNDA:4,System.Boolean NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<>c::<GetUserSummary>b__3_0(System.Security.Claims.Claim)
+DA:38,4
+FN:67,System.Boolean NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<>c::<UpdateUserSummaryById>b__4_0(System.Security.Claims.Claim)
+FNDA:2,System.Boolean NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<>c::<UpdateUserSummaryById>b__4_0(System.Security.Claims.Claim)
+DA:68,2
+FN:21,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<GetUserShortcut>d__2::MoveNext()
+FNDA:0,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<GetUserShortcut>d__2::MoveNext()
+DA:22,0
+DA:23,0
+DA:25,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+BRDA:25,158,0,0
+BRDA:25,158,1,0
+FN:34,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<GetUserSummary>d__3::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<GetUserSummary>d__3::MoveNext()
+DA:35,2
+DA:36,2
+DA:37,2
+DA:40,2
+DA:41,1
+DA:42,1
+DA:43,1
+DA:44,1
+DA:45,1
+DA:46,1
+DA:47,1
+DA:48,1
+DA:49,1
+DA:50,1
+DA:53,1
+DA:54,2
+BRDA:40,357,0,1
+BRDA:40,357,1,1
+BRDA:40,375,0,1
+BRDA:40,375,1,1
+FN:56,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<UpdateUserSummaryById>d__4::MoveNext()
+FNDA:3,System.Void NetBlog.BAL.Services.UserSummaryServices.UserSummaryService/<UpdateUserSummaryById>d__4::MoveNext()
+DA:57,3
+DA:58,4
+DA:59,2
+DA:61,2
+DA:62,1
+DA:63,1
+DA:65,1
+DA:67,1
+DA:69,1
+DA:70,1
+DA:71,1
+DA:72,1
+DA:73,1
+DA:74,1
+DA:76,1
+DA:77,1
+DA:78,1
+DA:79,1
+DA:80,1
+DA:81,1
+DA:82,1
+DA:83,1
+DA:84,1
+DA:85,1
+DA:86,1
+DA:87,0
+DA:88,0
+DA:89,1
+DA:90,3
+BRDA:58,81,0,2
+BRDA:58,81,1,1
+BRDA:58,102,0,1
+BRDA:58,102,1,2
+BRDA:61,261,0,1
+BRDA:69,619,0,1
+BRDA:69,619,1,1
+BRDA:76,963,0,1
+BRDA:76,963,1,0
+BRDA:76,983,0,1
+BRDA:76,983,1,0
+BRDA:61,261,1,1
+LF:60
+LH:49
+BRF:18
+BRH:14
+FNF:6
+FNH:5
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\Services\PostsServices\PostService.cs
+FN:19,System.Void NetBlog.BAL.Services.PostsServices.PostService::.ctor(NetBlog.DAL.Repositories.IRepository`1<NetBlog.DAL.Models.Post>,AutoMapper.IMapper,NetBlog.BAL.Services.UserSummaryService.IUserSummaryService)
+FNDA:10,System.Void NetBlog.BAL.Services.PostsServices.PostService::.ctor(NetBlog.DAL.Repositories.IRepository`1<NetBlog.DAL.Models.Post>,AutoMapper.IMapper,NetBlog.BAL.Services.UserSummaryService.IUserSummaryService)
+DA:20,10
+DA:21,10
+DA:22,10
+DA:23,10
+DA:24,10
+DA:25,10
+FN:27,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Add>d__4::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Add>d__4::MoveNext()
+DA:28,1
+DA:29,1
+DA:31,1
+DA:33,1
+DA:34,1
+FN:36,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Delete>d__5::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Delete>d__5::MoveNext()
+DA:37,1
+DA:38,1
+DA:40,1
+DA:41,1
+FN:43,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetById>d__6::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetById>d__6::MoveNext()
+DA:44,2
+DA:45,3
+DA:46,1
+DA:47,1
+DA:49,1
+DA:50,1
+DA:51,5
+DA:52,1
+DA:53,1
+DA:54,1
+DA:55,1
+DA:56,2
+BRDA:45,54,0,1
+BRDA:45,54,1,1
+BRDA:51,675,1,1
+BRDA:51,675,0,1
+FN:58,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetPostShortcutsOfUser>d__7::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetPostShortcutsOfUser>d__7::MoveNext()
+DA:59,2
+DA:60,3
+DA:61,1
+DA:62,1
+DA:64,1
+DA:65,2
+BRDA:60,25,0,1
+BRDA:60,25,1,1
+BRDA:60,41,0,1
+BRDA:60,41,1,1
+FN:67,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetSummaries>d__8::MoveNext()
+FNDA:3,System.Void NetBlog.BAL.Services.PostsServices.PostService/<GetSummaries>d__8::MoveNext()
+DA:68,3
+DA:69,4
+DA:70,2
+DA:71,2
+DA:72,2
+DA:74,2
+DA:76,2
+DA:77,14
+DA:78,4
+DA:79,4
+DA:80,4
+DA:82,2
+DA:83,3
+BRDA:69,36,0,2
+BRDA:69,36,1,1
+BRDA:69,52,0,1
+BRDA:69,52,1,2
+BRDA:70,68,0,1
+BRDA:70,68,1,1
+BRDA:77,526,1,4
+BRDA:77,526,0,2
+FN:85,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Update>d__9::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.PostsServices.PostService/<Update>d__9::MoveNext()
+DA:86,1
+DA:87,1
+DA:89,1
+DA:91,1
+DA:92,1
+DA:93,1
+LF:52
+LH:52
+BRF:16
+BRH:16
+FNF:7
+FNH:7
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\Services\CommentsService\CommentService.cs
+FN:23,System.Void NetBlog.BAL.Services.CommentsService.CommentService::.ctor(NetBlog.DAL.Repositories.IRepository`1<NetBlog.DAL.Models.Comment>,AutoMapper.IMapper,NetBlog.BAL.Services.UserSummaryService.IUserSummaryService)
+FNDA:6,System.Void NetBlog.BAL.Services.CommentsService.CommentService::.ctor(NetBlog.DAL.Repositories.IRepository`1<NetBlog.DAL.Models.Comment>,AutoMapper.IMapper,NetBlog.BAL.Services.UserSummaryService.IUserSummaryService)
+DA:24,6
+DA:25,6
+DA:26,6
+DA:27,6
+DA:28,6
+DA:29,6
+FN:31,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<CreateComment>d__4::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<CreateComment>d__4::MoveNext()
+DA:32,1
+DA:33,1
+DA:34,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:39,1
+FN:41,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<DeleteComment>d__5::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<DeleteComment>d__5::MoveNext()
+DA:42,1
+DA:43,1
+DA:45,1
+DA:46,1
+FN:48,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentById>d__6::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentById>d__6::MoveNext()
+DA:49,1
+DA:50,1
+DA:52,1
+DA:53,1
+FN:71,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentShortuctsOfUser>d__8::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentShortuctsOfUser>d__8::MoveNext()
+DA:72,1
+DA:73,1
+DA:74,1
+DA:75,1
+DA:77,1
+DA:79,1
+DA:80,1
+BRDA:73,25,0,1
+BRDA:73,25,1,0
+BRDA:73,41,0,0
+BRDA:73,41,1,1
+FN:55,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentsForPost>d__7::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.CommentsService.CommentService/<GetCommentsForPost>d__7::MoveNext()
+DA:56,2
+DA:57,3
+DA:58,1
+DA:60,1
+DA:61,1
+DA:63,7
+DA:64,2
+DA:65,2
+DA:66,2
+DA:68,1
+DA:69,2
+BRDA:57,36,0,1
+BRDA:57,36,1,1
+BRDA:57,52,0,1
+BRDA:57,52,1,1
+BRDA:63,505,1,2
+BRDA:63,505,0,1
+LF:39
+LH:39
+BRF:10
+BRH:8
+FNF:6
+FNH:6
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.BAL\Services\AuthServices\AuthService.cs
+FN:18,System.Void NetBlog.BAL.Services.AuthServices.AuthService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<Microsoft.AspNetCore.Identity.IdentityUser>,Microsoft.Extensions.Configuration.IConfiguration)
+FNDA:4,System.Void NetBlog.BAL.Services.AuthServices.AuthService::.ctor(Microsoft.AspNetCore.Identity.UserManager`1<Microsoft.AspNetCore.Identity.IdentityUser>,Microsoft.Extensions.Configuration.IConfiguration)
+DA:19,4
+DA:20,4
+DA:21,4
+DA:22,4
+DA:23,4
+FN:25,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<CreateJWTToken>d__3::MoveNext()
+FNDA:1,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<CreateJWTToken>d__3::MoveNext()
+DA:26,1
+DA:27,1
+DA:28,1
+DA:29,1
+DA:30,1
+DA:31,1
+DA:32,1
+DA:33,5
+DA:34,1
+DA:35,1
+DA:36,1
+DA:38,1
+DA:39,1
+DA:41,1
+DA:42,1
+DA:43,1
+DA:44,1
+DA:45,1
+DA:46,1
+DA:47,1
+DA:48,1
+DA:49,1
+BRDA:33,188,1,1
+BRDA:33,188,0,1
+FN:51,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<Login>d__4::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<Login>d__4::MoveNext()
+DA:52,2
+DA:53,2
+DA:55,2
+DA:56,1
+DA:57,1
+DA:58,1
+DA:59,1
+DA:60,1
+DA:61,1
+DA:62,1
+DA:63,1
+DA:64,1
+DA:65,1
+DA:66,1
+DA:67,1
+DA:68,1
+DA:69,1
+DA:70,1
+DA:72,1
+DA:74,0
+DA:75,0
+DA:76,1
+DA:77,2
+BRDA:55,203,0,1
+BRDA:58,362,0,1
+BRDA:61,520,0,1
+BRDA:61,520,1,0
+BRDA:58,362,1,0
+BRDA:55,203,1,1
+FN:79,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<Register>d__5::MoveNext()
+FNDA:2,System.Void NetBlog.BAL.Services.AuthServices.AuthService/<Register>d__5::MoveNext()
+DA:80,2
+DA:81,2
+DA:82,2
+DA:83,2
+DA:84,2
+DA:85,2
+DA:87,2
+DA:88,2
+DA:89,1
+DA:90,1
+DA:91,1
+DA:92,1
+DA:94,1
+DA:95,1
+DA:96,1
+DA:97,1
+DA:98,2
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,1
+DA:103,2
+BRDA:88,252,0,1
+BRDA:90,269,0,1
+BRDA:90,269,1,0
+BRDA:90,294,0,1
+BRDA:94,465,0,1
+BRDA:98,652,0,1
+BRDA:98,652,1,0
+BRDA:94,465,1,0
+BRDA:90,294,1,0
+BRDA:88,252,1,1
+LF:72
+LH:67
+BRF:18
+BRH:12
+FNF:4
+FNH:4
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\Mappings\AutoMapperProfile.cs
+FN:13,System.Void NetBlog.Common.Mappings.AutoMapperProfile::.ctor()
+FNDA:8,System.Void NetBlog.Common.Mappings.AutoMapperProfile::.ctor()
+DA:14,8
+DA:15,8
+DA:16,8
+DA:17,16
+DA:18,8
+DA:19,8
+DA:20,16
+DA:21,8
+DA:22,8
+DA:23,16
+DA:24,8
+DA:25,16
+DA:26,8
+DA:27,8
+DA:28,16
+DA:29,8
+DA:30,16
+DA:31,8
+DA:32,16
+DA:33,8
+LF:20
+LH:20
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CommentDTO.cs
+FN:10,System.Guid NetBlog.Common.DTO.CommentDTO::get_Id()
+FNDA:24,System.Guid NetBlog.Common.DTO.CommentDTO::get_Id()
+DA:11,24
+FN:11,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.CommentDTO::get_CreatedBy()
+FNDA:19,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.CommentDTO::get_CreatedBy()
+DA:12,19
+FN:12,System.String NetBlog.Common.DTO.CommentDTO::get_CommentText()
+FNDA:15,System.String NetBlog.Common.DTO.CommentDTO::get_CommentText()
+DA:13,15
+FN:13,System.DateTime NetBlog.Common.DTO.CommentDTO::get_DateCreated()
+FNDA:3,System.DateTime NetBlog.Common.DTO.CommentDTO::get_DateCreated()
+DA:14,3
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CommentShortcutDTO.cs
+FN:10,System.Guid NetBlog.Common.DTO.CommentShortcutDTO::get_PostId()
+FNDA:8,System.Guid NetBlog.Common.DTO.CommentShortcutDTO::get_PostId()
+DA:11,8
+FN:11,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_PostTitle()
+FNDA:4,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_PostTitle()
+DA:12,4
+FN:12,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_CommentText()
+FNDA:4,System.String NetBlog.Common.DTO.CommentShortcutDTO::get_CommentText()
+DA:13,4
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CreateCommentDTO.cs
+FN:10,System.Guid NetBlog.Common.DTO.CreateCommentDTO::get_PostId()
+FNDA:5,System.Guid NetBlog.Common.DTO.CreateCommentDTO::get_PostId()
+DA:11,5
+FN:11,System.String NetBlog.Common.DTO.CreateCommentDTO::get_AuthorId()
+FNDA:9,System.String NetBlog.Common.DTO.CreateCommentDTO::get_AuthorId()
+DA:12,9
+FN:12,System.String NetBlog.Common.DTO.CreateCommentDTO::get_CommentText()
+FNDA:4,System.String NetBlog.Common.DTO.CreateCommentDTO::get_CommentText()
+DA:13,4
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\CreatePostDTO.cs
+FN:10,System.String NetBlog.Common.DTO.CreatePostDTO::get_Title()
+FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_Title()
+DA:11,4
+FN:11,System.String NetBlog.Common.DTO.CreatePostDTO::get_ContentPreview()
+FNDA:3,System.String NetBlog.Common.DTO.CreatePostDTO::get_ContentPreview()
+DA:12,3
+FN:12,System.String NetBlog.Common.DTO.CreatePostDTO::get_Content()
+FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_Content()
+DA:13,4
+FN:13,System.String NetBlog.Common.DTO.CreatePostDTO::get_CreatedBy()
+FNDA:4,System.String NetBlog.Common.DTO.CreatePostDTO::get_CreatedBy()
+DA:14,4
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\LoginResponseDTO.cs
+FN:10,System.String NetBlog.Common.DTO.LoginResponseDTO::get_UserId()
+FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_UserId()
+DA:11,1
+FN:11,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Name()
+FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Name()
+DA:12,1
+FN:12,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Email()
+FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Email()
+DA:13,1
+FN:13,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Token()
+FNDA:1,System.String NetBlog.Common.DTO.LoginResponseDTO::get_Token()
+DA:14,1
+FN:14,System.String[] NetBlog.Common.DTO.LoginResponseDTO::get_Roles()
+FNDA:1,System.String[] NetBlog.Common.DTO.LoginResponseDTO::get_Roles()
+DA:15,1
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:5
+FNH:5
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\LoginUserDTO.cs
+FN:10,System.String NetBlog.Common.DTO.LoginUserDTO::get_Email()
+FNDA:4,System.String NetBlog.Common.DTO.LoginUserDTO::get_Email()
+DA:11,4
+FN:11,System.String NetBlog.Common.DTO.LoginUserDTO::get_Password()
+FNDA:3,System.String NetBlog.Common.DTO.LoginUserDTO::get_Password()
+DA:12,3
+LF:2
+LH:2
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostDTO.cs
+FN:10,System.Guid NetBlog.Common.DTO.PostDTO::get_Id()
+FNDA:14,System.Guid NetBlog.Common.DTO.PostDTO::get_Id()
+DA:11,14
+FN:11,System.String NetBlog.Common.DTO.PostDTO::get_Title()
+FNDA:14,System.String NetBlog.Common.DTO.PostDTO::get_Title()
+DA:12,14
+FN:12,System.String NetBlog.Common.DTO.PostDTO::get_ContentPreview()
+FNDA:2,System.String NetBlog.Common.DTO.PostDTO::get_ContentPreview()
+DA:13,2
+FN:13,System.String NetBlog.Common.DTO.PostDTO::get_Content()
+FNDA:14,System.String NetBlog.Common.DTO.PostDTO::get_Content()
+DA:14,14
+FN:14,System.DateTime NetBlog.Common.DTO.PostDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.Common.DTO.PostDTO::get_DateCreated()
+DA:15,2
+FN:15,System.Nullable`1<System.DateTime> NetBlog.Common.DTO.PostDTO::get_DateUpdated()
+FNDA:2,System.Nullable`1<System.DateTime> NetBlog.Common.DTO.PostDTO::get_DateUpdated()
+DA:16,2
+FN:16,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostDTO::get_CreatedBy()
+FNDA:10,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostDTO::get_CreatedBy()
+DA:17,10
+FN:17,System.Collections.Generic.IEnumerable`1<NetBlog.Common.DTO.CommentDTO> NetBlog.Common.DTO.PostDTO::get_Comments()
+FNDA:7,System.Collections.Generic.IEnumerable`1<NetBlog.Common.DTO.CommentDTO> NetBlog.Common.DTO.PostDTO::get_Comments()
+DA:18,7
+LF:8
+LH:8
+BRF:0
+BRH:0
+FNF:8
+FNH:8
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostShortcutDTO.cs
+FN:11,System.Guid NetBlog.Common.DTO.PostShortcutDTO::get_Id()
+FNDA:8,System.Guid NetBlog.Common.DTO.PostShortcutDTO::get_Id()
+DA:12,8
+FN:12,System.String NetBlog.Common.DTO.PostShortcutDTO::get_Title()
+FNDA:4,System.String NetBlog.Common.DTO.PostShortcutDTO::get_Title()
+DA:13,4
+FN:13,System.DateTime NetBlog.Common.DTO.PostShortcutDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.Common.DTO.PostShortcutDTO::get_DateCreated()
+DA:14,2
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\PostSummaryDTO.cs
+FN:10,System.Guid NetBlog.Common.DTO.PostSummaryDTO::get_Id()
+FNDA:14,System.Guid NetBlog.Common.DTO.PostSummaryDTO::get_Id()
+DA:11,14
+FN:11,System.String NetBlog.Common.DTO.PostSummaryDTO::get_Title()
+FNDA:6,System.String NetBlog.Common.DTO.PostSummaryDTO::get_Title()
+DA:12,6
+FN:12,System.String NetBlog.Common.DTO.PostSummaryDTO::get_ContentPreview()
+FNDA:2,System.String NetBlog.Common.DTO.PostSummaryDTO::get_ContentPreview()
+DA:13,2
+FN:13,System.DateTime NetBlog.Common.DTO.PostSummaryDTO::get_DateCreated()
+FNDA:2,System.DateTime NetBlog.Common.DTO.PostSummaryDTO::get_DateCreated()
+DA:14,2
+FN:14,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostSummaryDTO::get_CreatedBy()
+FNDA:14,NetBlog.Common.DTO.UserShortcutDTO NetBlog.Common.DTO.PostSummaryDTO::get_CreatedBy()
+DA:15,14
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:5
+FNH:5
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\RegisterUserDTO.cs
+FN:10,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Name()
+FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Name()
+DA:11,4
+FN:11,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Email()
+FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Email()
+DA:12,4
+FN:12,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Password()
+FNDA:4,System.String NetBlog.Common.DTO.RegisterUserDTO::get_Password()
+DA:13,4
+FN:13,System.String[] NetBlog.Common.DTO.RegisterUserDTO::get_Roles()
+FNDA:4,System.String[] NetBlog.Common.DTO.RegisterUserDTO::get_Roles()
+DA:14,4
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UpdatePostDTO.cs
+FN:10,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Title()
+FNDA:5,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Title()
+DA:11,5
+FN:11,System.String NetBlog.Common.DTO.UpdatePostDTO::get_ContentPreview()
+FNDA:3,System.String NetBlog.Common.DTO.UpdatePostDTO::get_ContentPreview()
+DA:12,3
+FN:12,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Content()
+FNDA:5,System.String NetBlog.Common.DTO.UpdatePostDTO::get_Content()
+DA:13,5
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UpdateUserDTO.cs
+FN:10,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Name()
+FNDA:6,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Name()
+DA:11,6
+FN:11,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Bio()
+FNDA:6,System.String NetBlog.Common.DTO.UpdateUserDTO::get_Bio()
+DA:12,6
+LF:2
+LH:2
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UserShortcutDTO.cs
+FN:10,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserId()
+FNDA:42,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserId()
+DA:11,42
+FN:11,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserName()
+FNDA:7,System.String NetBlog.Common.DTO.UserShortcutDTO::get_UserName()
+DA:12,7
+LF:2
+LH:2
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.Common\DTO\UserSummaryDTO.cs
+FN:10,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Id()
+FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Id()
+DA:11,2
+FN:11,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Name()
+FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Name()
+DA:12,2
+FN:12,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Email()
+FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Email()
+DA:13,2
+FN:13,System.String[] NetBlog.Common.DTO.UserSummaryDTO::get_Roles()
+FNDA:2,System.String[] NetBlog.Common.DTO.UserSummaryDTO::get_Roles()
+DA:14,2
+FN:14,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Bio()
+FNDA:2,System.String NetBlog.Common.DTO.UserSummaryDTO::get_Bio()
+DA:15,2
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:5
+FNH:5
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\BaseSpecification.cs
+FN:27,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_Criteria()
+FNDA:3,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_Criteria()
+DA:28,3
+FN:28,System.Collections.Generic.List`1<System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_Includes()
+FNDA:12,System.Collections.Generic.List`1<System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_Includes()
+DA:29,12
+FN:29,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_OrderBy()
+FNDA:4,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_OrderBy()
+DA:30,4
+FN:30,System.Nullable`1<System.Boolean> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_OrderByAscending()
+FNDA:8,System.Nullable`1<System.Boolean> NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::get_OrderByAscending()
+DA:31,8
+FN:32,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::AddInclude(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>)
+FNDA:12,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::AddInclude(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>)
+DA:33,12
+FN:33,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::AddOrderBy(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>,System.Boolean)
+FNDA:28,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::AddOrderBy(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Object>>,System.Boolean)
+DA:34,28
+FN:13,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::.ctor()
+FNDA:8,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::.ctor()
+DA:14,8
+DA:15,8
+DA:16,8
+DA:17,8
+FN:17,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::.ctor(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>>)
+FNDA:10,System.Void NetBlog.DAL.Specifications.Implementations.BaseSpecification`1::.ctor(System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>>)
+DA:18,10
+DA:19,5
+DA:20,5
+DA:21,5
+LF:14
+LH:14
+BRF:0
+BRH:0
+FNF:8
+FNH:8
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\CommentsForPostSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.CommentsForPostSpecification::.ctor(System.Guid,System.Boolean)
+FNDA:1,System.Void NetBlog.DAL.Specifications.Implementations.CommentsForPostSpecification::.ctor(System.Guid,System.Boolean)
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\CommentsOfUserSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.CommentsOfUserSpecification::.ctor(System.String,System.Boolean)
+FNDA:2,System.Void NetBlog.DAL.Specifications.Implementations.CommentsOfUserSpecification::.ctor(System.String,System.Boolean)
+DA:12,2
+DA:13,1
+DA:14,1
+DA:15,1
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\PostsOfUserSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.PostsOfUserSpecification::.ctor(System.String,System.Boolean)
+FNDA:2,System.Void NetBlog.DAL.Specifications.Implementations.PostsOfUserSpecification::.ctor(System.String,System.Boolean)
+DA:12,2
+DA:13,1
+DA:14,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\PostsOrderedByDateCreatedSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.PostsOrderedByDateCreatedSpecification::.ctor(System.Boolean)
+FNDA:2,System.Void NetBlog.DAL.Specifications.Implementations.PostsOrderedByDateCreatedSpecification::.ctor(System.Boolean)
+DA:12,2
+DA:13,1
+DA:14,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\PostsWithSearchTermSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.PostsWithSearchTermSpecification::.ctor(System.String,System.Boolean)
+FNDA:1,System.Void NetBlog.DAL.Specifications.Implementations.PostsWithSearchTermSpecification::.ctor(System.String,System.Boolean)
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Specifications\Implementations\PostWithCommentsSpecification.cs
+FN:11,System.Void NetBlog.DAL.Specifications.Implementations.PostWithCommentsSpecification::.ctor(System.Int32)
+FNDA:6,System.Void NetBlog.DAL.Specifications.Implementations.PostWithCommentsSpecification::.ctor(System.Int32)
+DA:12,6
+DA:13,4
+DA:14,2
+DA:15,2
+BRDA:13,32,0,1
+BRDA:13,32,1,2
+LF:4
+LH:4
+BRF:2
+BRH:2
+FNF:1
+FNH:1
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Repositories\Repository.cs
+FN:38,System.Threading.Tasks.Task`1<T> NetBlog.DAL.Repositories.Repository`1::Get(System.Guid,NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>)
+FNDA:1,System.Threading.Tasks.Task`1<T> NetBlog.DAL.Repositories.Repository`1::Get(System.Guid,NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>)
+DA:39,1
+DA:40,1
+DA:41,1
+DA:42,1
+DA:43,1
+FN:45,System.Threading.Tasks.Task`1<T> NetBlog.DAL.Repositories.Repository`1::Get(System.Guid)
+FNDA:3,System.Threading.Tasks.Task`1<T> NetBlog.DAL.Repositories.Repository`1::Get(System.Guid)
+DA:46,3
+DA:47,3
+DA:48,3
+DA:49,3
+DA:50,3
+DA:51,3
+FN:53,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<T>> NetBlog.DAL.Repositories.Repository`1::GetAll(System.Int32,System.Int32)
+FNDA:6,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<T>> NetBlog.DAL.Repositories.Repository`1::GetAll(System.Int32,System.Int32)
+DA:54,6
+DA:55,7
+DA:56,5
+DA:57,5
+DA:58,5
+DA:59,5
+DA:60,5
+DA:61,5
+DA:62,6
+BRDA:55,3,0,5
+BRDA:55,3,1,1
+BRDA:55,14,0,1
+BRDA:55,14,1,5
+FN:64,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<T>> NetBlog.DAL.Repositories.Repository`1::GetAll(NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>,System.Int32,System.Int32)
+FNDA:3,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<T>> NetBlog.DAL.Repositories.Repository`1::GetAll(NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>,System.Int32,System.Int32)
+DA:65,3
+DA:66,4
+DA:67,2
+DA:68,2
+DA:69,2
+DA:70,2
+DA:71,2
+DA:72,3
+BRDA:66,3,0,2
+BRDA:66,3,1,1
+BRDA:66,14,0,1
+BRDA:66,14,1,2
+FN:85,System.Linq.IQueryable`1<T> NetBlog.DAL.Repositories.Repository`1::ApplySpecifications(System.Linq.IQueryable`1<T>,NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>)
+FNDA:3,System.Linq.IQueryable`1<T> NetBlog.DAL.Repositories.Repository`1::ApplySpecifications(System.Linq.IQueryable`1<T>,NetBlog.DAL.Specifications.Interfaces.ISpecification`1<T>)
+DA:86,3
+DA:87,3
+DA:89,3
+DA:90,3
+DA:91,3
+DA:92,3
+DA:94,3
+DA:96,3
+DA:97,0
+DA:98,0
+DA:99,0
+DA:102,3
+DA:103,3
+BRDA:89,14,0,3
+BRDA:89,14,1,3
+BRDA:94,44,0,1
+BRDA:94,44,1,3
+BRDA:96,86,0,0
+BRDA:98,103,0,0
+BRDA:98,103,1,0
+BRDA:96,86,1,3
+FN:15,System.Void NetBlog.DAL.Repositories.Repository`1::.ctor(NetBlog.DAL.Data.NetBlogDbContext)
+FNDA:42,System.Void NetBlog.DAL.Repositories.Repository`1::.ctor(NetBlog.DAL.Data.NetBlogDbContext)
+DA:16,42
+DA:17,21
+DA:18,21
+FN:75,System.Boolean NetBlog.DAL.Repositories.Repository`1/<>c__DisplayClass8_0::<Update>b__0(T)
+FNDA:3,System.Boolean NetBlog.DAL.Repositories.Repository`1/<>c__DisplayClass8_0::<Update>b__0(T)
+DA:76,3
+FN:19,System.Void NetBlog.DAL.Repositories.Repository`1/<Add>d__2::MoveNext()
+FNDA:1,System.Void NetBlog.DAL.Repositories.Repository`1/<Add>d__2::MoveNext()
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:24,1
+FN:26,System.Void NetBlog.DAL.Repositories.Repository`1/<Delete>d__3::MoveNext()
+FNDA:2,System.Void NetBlog.DAL.Repositories.Repository`1/<Delete>d__3::MoveNext()
+DA:27,2
+DA:28,2
+DA:30,3
+DA:32,1
+DA:34,1
+DA:35,1
+DA:36,2
+BRDA:30,412,0,1
+BRDA:30,412,1,1
+FN:74,System.Void NetBlog.DAL.Repositories.Repository`1/<Update>d__8::MoveNext()
+FNDA:2,System.Void NetBlog.DAL.Repositories.Repository`1/<Update>d__8::MoveNext()
+DA:75,2
+DA:77,1
+DA:78,1
+DA:81,1
+DA:82,1
+DA:83,1
+DA:84,2
+BRDA:76,94,0,1
+BRDA:76,94,1,1
+LF:64
+LH:61
+BRF:20
+BRH:17
+FNF:10
+FNH:10
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Models\Comment.cs
+FN:10,System.Guid NetBlog.DAL.Models.Comment::get_Id()
+FNDA:20,System.Guid NetBlog.DAL.Models.Comment::get_Id()
+DA:11,20
+FN:11,System.String NetBlog.DAL.Models.Comment::get_AuthorId()
+FNDA:14,System.String NetBlog.DAL.Models.Comment::get_AuthorId()
+DA:12,14
+FN:12,System.String NetBlog.DAL.Models.Comment::get_CommentText()
+FNDA:17,System.String NetBlog.DAL.Models.Comment::get_CommentText()
+DA:13,17
+FN:13,System.DateTime NetBlog.DAL.Models.Comment::get_DateCreated()
+FNDA:6,System.DateTime NetBlog.DAL.Models.Comment::get_DateCreated()
+DA:14,6
+FN:14,System.Guid NetBlog.DAL.Models.Comment::get_PostId()
+FNDA:5,System.Guid NetBlog.DAL.Models.Comment::get_PostId()
+DA:15,5
+FN:16,NetBlog.DAL.Models.Post NetBlog.DAL.Models.Comment::get_Post()
+FNDA:11,NetBlog.DAL.Models.Post NetBlog.DAL.Models.Comment::get_Post()
+DA:17,11
+FN:17,System.Boolean NetBlog.DAL.Models.Comment::get_IsDeleted()
+FNDA:9,System.Boolean NetBlog.DAL.Models.Comment::get_IsDeleted()
+DA:18,9
+LF:7
+LH:7
+BRF:0
+BRH:0
+FNF:7
+FNH:7
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Models\Post.cs
+FN:10,System.Guid NetBlog.DAL.Models.Post::get_Id()
+FNDA:34,System.Guid NetBlog.DAL.Models.Post::get_Id()
+DA:11,34
+FN:11,System.String NetBlog.DAL.Models.Post::get_Title()
+FNDA:32,System.String NetBlog.DAL.Models.Post::get_Title()
+DA:12,32
+FN:12,System.String NetBlog.DAL.Models.Post::get_ContentPreview()
+FNDA:10,System.String NetBlog.DAL.Models.Post::get_ContentPreview()
+DA:13,10
+FN:13,System.String NetBlog.DAL.Models.Post::get_Content()
+FNDA:19,System.String NetBlog.DAL.Models.Post::get_Content()
+DA:14,19
+FN:14,System.DateTime NetBlog.DAL.Models.Post::get_DateCreated()
+FNDA:11,System.DateTime NetBlog.DAL.Models.Post::get_DateCreated()
+DA:15,11
+FN:15,System.Nullable`1<System.DateTime> NetBlog.DAL.Models.Post::get_DateUpdated()
+FNDA:5,System.Nullable`1<System.DateTime> NetBlog.DAL.Models.Post::get_DateUpdated()
+DA:16,5
+FN:16,System.String NetBlog.DAL.Models.Post::get_CreatedBy()
+FNDA:19,System.String NetBlog.DAL.Models.Post::get_CreatedBy()
+DA:17,19
+FN:18,System.Collections.Generic.IEnumerable`1<NetBlog.DAL.Models.Comment> NetBlog.DAL.Models.Post::get_Comments()
+FNDA:5,System.Collections.Generic.IEnumerable`1<NetBlog.DAL.Models.Comment> NetBlog.DAL.Models.Post::get_Comments()
+DA:19,5
+FN:19,System.Boolean NetBlog.DAL.Models.Post::get_IsDeleted()
+FNDA:0,System.Boolean NetBlog.DAL.Models.Post::get_IsDeleted()
+DA:20,0
+LF:9
+LH:8
+BRF:0
+BRH:0
+FNF:9
+FNH:8
+end_of_record
+SF:C:\Users\artem\source\repos\NetBlog.API\NetBlog.DAL\Data\NetBlogDbContext.cs
+FN:17,Microsoft.EntityFrameworkCore.DbSet`1<NetBlog.DAL.Models.Post> NetBlog.DAL.Data.NetBlogDbContext::get_Posts()
+FNDA:18,Microsoft.EntityFrameworkCore.DbSet`1<NetBlog.DAL.Models.Post> NetBlog.DAL.Data.NetBlogDbContext::get_Posts()
+DA:18,18
+FN:18,Microsoft.EntityFrameworkCore.DbSet`1<NetBlog.DAL.Models.Comment> NetBlog.DAL.Data.NetBlogDbContext::get_Comments()
+FNDA:18,Microsoft.EntityFrameworkCore.DbSet`1<NetBlog.DAL.Models.Comment> NetBlog.DAL.Data.NetBlogDbContext::get_Comments()
+DA:19,18
+FN:21,System.Void NetBlog.DAL.Data.NetBlogDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:1,System.Void NetBlog.DAL.Data.NetBlogDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:22,1
+DA:23,1
+DA:25,1
+DA:26,1
+DA:27,1
+DA:28,1
+DA:29,1
+DA:30,1
+DA:31,1
+DA:32,1
+DA:33,1
+DA:34,1
+DA:35,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:39,1
+DA:40,1
+DA:41,1
+DA:42,1
+FN:15,System.Void NetBlog.DAL.Data.NetBlogDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<NetBlog.DAL.Data.NetBlogDbContext>)
+FNDA:18,System.Void NetBlog.DAL.Data.NetBlogDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<NetBlog.DAL.Data.NetBlogDbContext>)
+DA:16,18
+DA:17,36
+LF:24
+LH:24
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
