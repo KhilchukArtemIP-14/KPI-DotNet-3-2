@@ -47,11 +47,15 @@ namespace NetBlog.BAL.Services.PostsServices
             var entity = await _repository.Get(id, spec);
 
             var result = _mapper.Map<PostDTO>(entity);
-            result.CreatedBy = await _userSummaryService.GetUserShortcut(result.CreatedBy.UserId);
-            foreach(var comment in result.Comments)
+            if (result != null)
             {
-                comment.CreatedBy = await _userSummaryService.GetUserShortcut(comment.CreatedBy.UserId);
+                result.CreatedBy = await _userSummaryService.GetUserShortcut(result.CreatedBy.UserId);
+                foreach (var comment in result.Comments)
+                {
+                    comment.CreatedBy = await _userSummaryService.GetUserShortcut(comment.CreatedBy.UserId);
+                }
             }
+
             return result;
         }
 
