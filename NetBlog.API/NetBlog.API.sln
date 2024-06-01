@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBlog.BAL", "NetBlog.BAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBlog.UnitTests", "NetBlog.UnitTests\NetBlog.UnitTests.csproj", "{25139095-6C02-4359-9C79-40497CF78D4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.IntegrationTests", "NetBlog.IntegrationTests\NetBlog.IntegrationTests.csproj", "{3BA4CF12-9CD9-4973-B769-28B4C52E6336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBlog.IntegrationTests", "NetBlog.IntegrationTests\NetBlog.IntegrationTests.csproj", "{3BA4CF12-9CD9-4973-B769-28B4C52E6336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.EndToEndTests", "NetBlog.EndToEndTests\NetBlog.EndToEndTests.csproj", "{DC4B42C9-2787-44DA-8D79-C6300236F34F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3BA4CF12-9CD9-4973-B769-28B4C52E6336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA4CF12-9CD9-4973-B769-28B4C52E6336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BA4CF12-9CD9-4973-B769-28B4C52E6336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4B42C9-2787-44DA-8D79-C6300236F34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4B42C9-2787-44DA-8D79-C6300236F34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4B42C9-2787-44DA-8D79-C6300236F34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4B42C9-2787-44DA-8D79-C6300236F34F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

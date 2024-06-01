@@ -28,5 +28,6 @@
   </ItemGroup>
 	<ItemGroup>
 		<InternalsVisibleTo Include="NetBlog.IntegrationTests" />
+		<InternalsVisibleTo Include="NetBlog.EndToEndTests" />
 	</ItemGroup>
 </Project>
