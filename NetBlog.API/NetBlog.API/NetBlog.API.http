@@ -1,4 +1,4 @@
-@NetBlog.API_HostAddress = http://localhost:5116
+@NetBlog.API_HostAddress = http://localhost:5275
 
 GET {{NetBlog.API_HostAddress}}/weatherforecast/
 Accept: application/json
