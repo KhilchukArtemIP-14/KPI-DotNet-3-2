@@ -25,13 +25,21 @@ namespace NetBlog.UnitTests.BalTests
         [Fact]
         public async Task Login_ValidCredentials_ReturnsToken()
         {
-            var loginUserDTO = new LoginUserDTO { Email = "oof1@gmail.com", Password = "TestPassword" };
+            var loginUserDTO = new LoginUserDTO { Email = "oof1@gmail.com", Password = "Password1@" };
 
             var result = await _authService.Login(loginUserDTO);
 
             Assert.NotNull(result);
         }
+        [Fact]
+        public async Task Login_ValidEmailInvalidPassword_ReturnsNull()
+        {
+            var loginUserDTO = new LoginUserDTO { Email = "oof1@gmail.com", Password = "InvalidPassword" };
 
+            var result = await _authService.Login(loginUserDTO);
+
+            Assert.Null(result);
+        }
         [Fact]
         public async Task Login_InvalidCredentials_ReturnsErrorResponse()
         {

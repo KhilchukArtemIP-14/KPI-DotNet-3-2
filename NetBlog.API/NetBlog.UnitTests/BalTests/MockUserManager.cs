@@ -13,13 +13,15 @@ namespace NetBlog.UnitTests.BalTests
     {
         public static Mock<UserManager<IdentityUser>> CreateMockUserManager()
         {
-            var users = new List<IdentityUser>
+            var usersAndPassword = new Dictionary<IdentityUser, string>
         {
             {
-                new IdentityUser { Id = "114419fb-e456-43e9-9cc4-2612f8a8480d", Email = "oof1@gmail.com", UserName = "User1" }
+                new IdentityUser { Id = "114419fb-e456-43e9-9cc4-2612f8a8480d", Email = "oof1@gmail.com", UserName = "User1" },
+                "Password1@"
             },
             {
-                new IdentityUser { Id = "a6fa9268-7f68-4e94-a5f1-972a1b817550", Email = "ooof2@gmail.com", UserName = "User2" }
+                new IdentityUser { Id = "a6fa9268-7f68-4e94-a5f1-972a1b817550", Email = "ooof2@gmail.com", UserName = "User2" },
+                "Password2@"
             },
         };
 
@@ -28,16 +30,16 @@ namespace NetBlog.UnitTests.BalTests
                 null, null, null, null, null, null, null, null);
 
             userManagerMock.Setup(m => m.FindByIdAsync(It.IsAny<string>()))
-                .ReturnsAsync((string userId) => users.FirstOrDefault(u=>u.Id==userId));
+                .ReturnsAsync((string userId) => usersAndPassword.Keys.FirstOrDefault(u => u.Id == userId));
 
             userManagerMock.Setup(m => m.UpdateAsync(It.IsAny<IdentityUser>()))
                 .ReturnsAsync(IdentityResult.Success);
 
             userManagerMock.Setup(m => m.CheckPasswordAsync(It.IsAny<IdentityUser>(), It.IsAny<string>()))
-                .ReturnsAsync(true);
+                .ReturnsAsync((IdentityUser user, string password) => usersAndPassword.TryGetValue(user, out var storedPassword) && storedPassword == password);
 
             userManagerMock.Setup(m => m.FindByEmailAsync(It.IsAny<string>()))
-                .ReturnsAsync((string email) => users.FirstOrDefault(u => u.Email == email));
+                .ReturnsAsync((string email) => usersAndPassword.Keys.FirstOrDefault(u => u.Email == email));
 
             userManagerMock.Setup(m => m.GetClaimsAsync(It.IsAny<IdentityUser>()))
                 .ReturnsAsync(new List<Claim> { new Claim("bio","Bio") });
