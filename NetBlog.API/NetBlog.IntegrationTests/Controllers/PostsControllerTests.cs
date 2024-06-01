@@ -22,7 +22,7 @@ namespace NetBlog.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task AddPost_WhenAuthorizedAsAuthor_ShouldReturnOk()
+        public async Task AddPost_WhenAuthorizedAsAuthorAndValidData_ShouldReturnOk()
         {
             await _factory.SeedDataAsync();
             var jwtToken = await JWTGenerator.GetExistingAuthorJwt(_client);
@@ -48,7 +48,20 @@ namespace NetBlog.IntegrationTests.Controllers
             Assert.Equal(createPostDto.ContentPreview, createdPost.ContentPreview);
             Assert.Equal(createPostDto.Content, createdPost.Content);
         }
+        [Fact]
+        public async Task AddPost_WhenAuthorizedAsAuthorAndInvalidData_ShouldReturnBadRequest()
+        {
+            await _factory.SeedDataAsync();
+            var jwtToken = await JWTGenerator.GetExistingAuthorJwt(_client);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
+            var createPostDto = new CreatePostDTO();
+            var content = new StringContent(JsonConvert.SerializeObject(createPostDto), Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync("/api/Posts", content);
+
+            Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
+        }
         [Fact]
         public async Task AddPost_WhenUnauthorized_ShouldReturnForbidden()
         {
@@ -199,7 +212,21 @@ namespace NetBlog.IntegrationTests.Controllers
             Assert.Equal(updatePostDto.Title, updatedPost.Title);
             Assert.Equal(updatePostDto.ContentPreview, updatedPost.ContentPreview);
         }
+        [Fact]
+        public async Task UpdatePost_WhenAuthorizedAndInvalidData_ShouldReturnBadRequest()
+        {
+            await _factory.SeedDataAsync();
+            var jwtToken = await JWTGenerator.GetExistingAuthorJwt(_client);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
+            var postId = new Guid("f6536d0a-7e56-4a1e-9278-f1d5cc95e0b2");
+            var updatePostDto = new UpdatePostDTO();
+            var content = new StringContent(JsonConvert.SerializeObject(updatePostDto), Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync($"/api/Posts/{postId}", content);
+
+            Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
+        }
         [Fact]
         public async Task UpdatePost_WhenUnauthorized_ShouldReturnForbidden()
         {

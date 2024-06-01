@@ -7,7 +7,8 @@ using NetBlog.BAL.DTO;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Xml.Linq;
+using Microsoft.Extensions.Hosting;
+using System.Net;
 
 namespace NetBlog.EndToEndTests
 {
@@ -100,24 +101,21 @@ namespace NetBlog.EndToEndTests
             Assert.Equal(comments[0].Id, Guid.Parse("69a06e65-7598-4dbf-99cd-218ab5975456"));
 
             //Author deletes one comment
-            if (comments.Count > 0)
-            {
-                var commentToDelete = comments[0];
-                var deleteCommentResponse = await _client.DeleteAsync($"/api/Comments/{commentToDelete.Id}");
-                deleteCommentResponse.EnsureSuccessStatusCode();
-                var deleteCommentResponseString = await deleteCommentResponse.Content.ReadAsStringAsync();
-                var deletedComment = JsonConvert.DeserializeObject<CommentDTO>(deleteCommentResponseString);
-                Assert.NotNull(deletedComment);
-                Assert.Equal(commentToDelete.Id, deletedComment.Id);
+            var commentToDelete = comments[0];
+            var deleteCommentResponse = await _client.DeleteAsync($"/api/Comments/{commentToDelete.Id}");
+            deleteCommentResponse.EnsureSuccessStatusCode();
+            var deleteCommentResponseString = await deleteCommentResponse.Content.ReadAsStringAsync();
+            var deletedComment = JsonConvert.DeserializeObject<CommentDTO>(deleteCommentResponseString);
+            Assert.NotNull(deletedComment);
+            Assert.Equal(commentToDelete.Id, deletedComment.Id);
 
-                // assure it was deleted
-                var commentsAfterDeleteRequest = await _client.GetAsync($"/api/Comments/post/f6536d0a-7e56-4a1e-9278-f1d5cc95e0b2?pageNumber=2&pageSize=1");
-                commentsAfterDeleteRequest.EnsureSuccessStatusCode();
-                var getCommentsAfterDeleteResponseString = await commentsAfterDeleteRequest.Content.ReadAsStringAsync();
-                var commentsAfterDelete = JsonConvert.DeserializeObject<List<CommentDTO>>(getCommentsAfterDeleteResponseString);
-                Assert.NotNull(commentsAfterDelete);
-                Assert.Empty(commentsAfterDelete);
-            }
+            // assure it was deleted
+            var commentsAfterDeleteRequest = await _client.GetAsync($"/api/Comments/post/f6536d0a-7e56-4a1e-9278-f1d5cc95e0b2?pageNumber=2&pageSize=1");
+            commentsAfterDeleteRequest.EnsureSuccessStatusCode();
+            var getCommentsAfterDeleteResponseString = await commentsAfterDeleteRequest.Content.ReadAsStringAsync();
+            var commentsAfterDelete = JsonConvert.DeserializeObject<List<CommentDTO>>(getCommentsAfterDeleteResponseString);
+            Assert.NotNull(commentsAfterDelete);
+            Assert.Empty(commentsAfterDelete);
 
             //Author updates the post
             var updatePostDto = new UpdatePostDTO
@@ -136,6 +134,18 @@ namespace NetBlog.EndToEndTests
             Assert.Equal(updatePostDto.Content, updatedPost.Content);
             Assert.Equal(updatePostDto.ContentPreview, updatedPost.ContentPreview);
             Assert.Equal("3c8b0d12-13e9-4f42-85a4-5d3ce1e7e34f", updatedPost.CreatedBy.UserId);
+
+            // Author deletes the post
+            var deletePostResponse = await _client.DeleteAsync($"/api/Posts/{createdPost.Id}");
+            deletePostResponse.EnsureSuccessStatusCode();
+            var deletePostResponseString = await deletePostResponse.Content.ReadAsStringAsync();
+            var deletedPost = JsonConvert.DeserializeObject<PostDTO>(deletePostResponseString);
+            Assert.NotNull(deletedPost);
+            Assert.Equal(createdPost.Id, deletedPost.Id);
+
+            // Assure the post was deleted
+            var checkDeletedPostResponse = await _client.GetAsync($"/api/Posts/{createdPost.Id}");
+            Assert.Equal(HttpStatusCode.NotFound, checkDeletedPostResponse.StatusCode);
         }
 
         [Fact]
@@ -243,6 +253,63 @@ namespace NetBlog.EndToEndTests
             userComments = JsonConvert.DeserializeObject<List<CommentShortcutDTO>>(userCommentsResponseString);
             Assert.NotNull(userComments);
             Assert.Equal(userComments.Count, 0);
+        }
+        [Fact]
+        public async Task AuthorUserSummaryUpdateScenarioAsync()
+        {
+            // Scenario:
+            // 1.Author logs in
+            // 2.Author gets his user summary
+            // 3.Author updates his user summary
+            // 4.Author checks if his updated name is displayed on his posts
+
+            await _factory.SeedDataAsync();
+
+            // Author logs in
+            var loginDto = new LoginUserDTO
+            {
+                Email = "frookt4555@gmail.com",
+                Password = "SuperSecurePaswwordqwerty@"
+            };
+            var loginContent = new StringContent(JsonConvert.SerializeObject(loginDto), Encoding.UTF8, "application/json");
+
+            var loginResponse = await _client.PostAsync("/api/Auth/login", loginContent);
+            loginResponse.EnsureSuccessStatusCode();
+
+            var loginResponseString = await loginResponse.Content.ReadAsStringAsync();
+            var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDTO>(loginResponseString);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto.Token);
+
+            // Author gets his user summary
+            var userSummaryResponse = await _client.GetAsync($"/api/UserSummary/{loginResponseDto.UserId}");
+            userSummaryResponse.EnsureSuccessStatusCode();
+
+            var userSummaryResponseString = await userSummaryResponse.Content.ReadAsStringAsync();
+            var userSummary = JsonConvert.DeserializeObject<UserSummaryDTO>(userSummaryResponseString);
+            Assert.NotNull(userSummary);
+            Assert.Equal(loginResponseDto.UserId, userSummary.Id);
+            Assert.Equal("Author", userSummary.Name);
+            Assert.Equal("frookt4555@gmail.com", userSummary.Email);
+
+            // Author updates his user summary
+            var updateUserDto = new UpdateUserDTO
+            {
+                Name = "Author1",
+                Bio = "Bio1"
+            };
+            var updateUserContent = new StringContent(JsonConvert.SerializeObject(updateUserDto), Encoding.UTF8, "application/json");
+
+            var updateUserResponse = await _client.PutAsync($"/api/UserSummary/{loginResponseDto.UserId}", updateUserContent);
+            updateUserResponse.EnsureSuccessStatusCode();
+
+            // Author checks if his updated name is displayed on his posts
+            var authorPostsResponse = await _client.GetAsync($"/api/Posts/f6536d0a-7e56-4a1e-9278-f1d5cc95e0b2");
+            authorPostsResponse.EnsureSuccessStatusCode();
+
+            var authorPostsResponseString = await authorPostsResponse.Content.ReadAsStringAsync();
+            var authorPost = JsonConvert.DeserializeObject<PostDTO>(authorPostsResponseString);
+            Assert.NotNull(authorPost);
+            Assert.Equal("Author1", authorPost.CreatedBy.UserName);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace NetBlog.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task CreateComment_WhenAuthorized_ShouldReturnOk()
+        public async Task CreateComment_WhenAuthorizedAndValidData_ShouldReturnOk()
         {
             await _factory.SeedDataAsync();
             var jwtToken = await JWTGenerator.GetExistingAuthorJwt(_client);
@@ -45,7 +45,21 @@ namespace NetBlog.IntegrationTests.Controllers
             Assert.NotNull(createdComment);
             Assert.Equal("This is a comment.", createdComment.CommentText);
         }
+        [Fact]
+        public async Task CreateComment_WhenAuthorizedAndInvalidData_ShouldReturnBadRequest()
+        {
+            await _factory.SeedDataAsync();
+            var jwtToken = await JWTGenerator.GetExistingAuthorJwt(_client);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
+            var createCommentDto = new CreateCommentDTO();
+        
+            var content = new StringContent(JsonConvert.SerializeObject(createCommentDto), Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync("/api/Comments", content);
+
+            Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
+        }
         [Fact]
         public async Task CreateComment_WhenUnauthorized_ShouldReturnUnauthorized()
         {
