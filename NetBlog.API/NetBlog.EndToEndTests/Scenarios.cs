@@ -7,6 +7,7 @@ using NetBlog.BAL.DTO;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Xml.Linq;
 
 namespace NetBlog.EndToEndTests
 {
@@ -135,6 +136,113 @@ namespace NetBlog.EndToEndTests
             Assert.Equal(updatePostDto.Content, updatedPost.Content);
             Assert.Equal(updatePostDto.ContentPreview, updatedPost.ContentPreview);
             Assert.Equal("3c8b0d12-13e9-4f42-85a4-5d3ce1e7e34f", updatedPost.CreatedBy.UserId);
+        }
+
+        [Fact]
+        public async Task UnregisteredUserFullCommentingLifecycleScenarioAsync()
+        {
+            // Scenario:
+            // 1.Unregistered user checks post
+            // 2.Unregistered user registers
+            // 3.Registered user logs in
+            // 4.Authenticated user adds comment to post
+            // 5.Authenticated user checks his user summary
+            // 6.Authenticated user checks his comments
+            // 7.Authenticated user deletes his comment
+
+            await _factory.SeedDataAsync();
+
+            //Unregistered user checks post
+            var postId = "f6536d0a-7e56-4a1e-9278-f1d5cc95e0b2";
+            var checkPostResponse = await _client.GetAsync($"/api/Posts/{postId}?commentsToLoad=1");
+            checkPostResponse.EnsureSuccessStatusCode();
+            var checkPostResponseString = await checkPostResponse.Content.ReadAsStringAsync();
+            var checkedPost = JsonConvert.DeserializeObject<PostDTO>(checkPostResponseString);
+            Assert.NotNull(checkedPost);
+
+            //Unregistered user registers
+            var registerDto = new RegisterUserDTO
+            {
+                Name = "WiseUser",
+                Email = "wiseuser@wiseposters.com",
+                Password = "SuperSecurePassword@123",
+                Roles = ["Reader"]
+            };
+            var registerContent = new StringContent(JsonConvert.SerializeObject(registerDto), Encoding.UTF8, "application/json");
+
+            var registerResponse = await _client.PostAsync("/api/Auth/register", registerContent);
+            registerResponse.EnsureSuccessStatusCode();
+
+            //Registered user logs in
+            var loginDto = new LoginUserDTO
+            {
+                Email = "wiseuser@wiseposters.com",
+                Password = "SuperSecurePassword@123"
+            };
+            var loginContent = new StringContent(JsonConvert.SerializeObject(loginDto), Encoding.UTF8, "application/json");
+
+            var loginResponse = await _client.PostAsync("/api/Auth/login", loginContent);
+
+            loginResponse.EnsureSuccessStatusCode();
+            var loginResponseString = await loginResponse.Content.ReadAsStringAsync();
+            var loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDTO>(loginResponseString);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponseDto.Token);
+
+            // Logged user adds comment to post
+            var createCommentDto = new CreateCommentDTO
+            {
+                PostId = Guid.Parse(postId),
+                AuthorId = loginResponseDto.UserId,
+                CommentText = "This is a wise comment."
+            };
+            var createCommentContent = new StringContent(JsonConvert.SerializeObject(createCommentDto), Encoding.UTF8, "application/json");
+
+            var createCommentResponse = await _client.PostAsync("/api/Comments", createCommentContent);
+            createCommentResponse.EnsureSuccessStatusCode();
+            var createCommentResponseString = await createCommentResponse.Content.ReadAsStringAsync();
+            var createdComment = JsonConvert.DeserializeObject<CommentDTO>(createCommentResponseString);
+
+            Assert.NotNull(createdComment);
+            Assert.Equal(createCommentDto.CommentText, createdComment.CommentText);
+            Assert.Equal(createCommentDto.AuthorId, createdComment.CreatedBy.UserId);
+
+            // Logged user checks his user summary
+            var userSummaryResponse = await _client.GetAsync($"/api/UserSummary/{loginResponseDto.UserId}");
+            userSummaryResponse.EnsureSuccessStatusCode();
+            var userSummaryResponseString = await userSummaryResponse.Content.ReadAsStringAsync();
+            var userSummary = JsonConvert.DeserializeObject<UserSummaryDTO>(userSummaryResponseString);
+            Assert.NotNull(userSummary);
+            Assert.Equal(loginResponseDto.UserId, userSummary.Id);
+            Assert.Equal(registerDto.Name, userSummary.Name);
+            Assert.Equal(registerDto.Email, userSummary.Email);
+            Assert.Equal("Empty", userSummary.Bio);
+
+            // Logged user checks his comments
+            var userCommentsResponse = await _client.GetAsync($"/api/Comments/user/{loginResponseDto.UserId}?pageNumber=1&pageSize=5");
+            userCommentsResponse.EnsureSuccessStatusCode();
+            var userCommentsResponseString = await userCommentsResponse.Content.ReadAsStringAsync();
+            var userComments = JsonConvert.DeserializeObject<List<CommentShortcutDTO>>(userCommentsResponseString);
+            Assert.NotNull(userComments);
+            Assert.True(userComments.Count > 0);
+            var userComment = userComments[0];
+            Assert.Equal(createdComment.CommentText, userComment.CommentText);
+
+            // Logged user deletes his comment
+            var deleteCommentResponse = await _client.DeleteAsync($"/api/Comments/{createdComment.Id}");
+            deleteCommentResponse.EnsureSuccessStatusCode();
+            var deleteCommentResponseString = await deleteCommentResponse.Content.ReadAsStringAsync();
+            var deletedComment = JsonConvert.DeserializeObject<CommentDTO>(deleteCommentResponseString);
+            Assert.NotNull(deletedComment);
+            Assert.Equal(createdComment.Id, deletedComment.Id);
+            // assure it was deleted
+            userCommentsResponse = await _client.GetAsync($"/api/Comments/user/{loginResponseDto.UserId}?pageNumber=1&pageSize=5");
+            userCommentsResponse.EnsureSuccessStatusCode();
+
+            userCommentsResponseString = await userCommentsResponse.Content.ReadAsStringAsync();
+
+            userComments = JsonConvert.DeserializeObject<List<CommentShortcutDTO>>(userCommentsResponseString);
+            Assert.NotNull(userComments);
+            Assert.Equal(userComments.Count, 0);
         }
     }
 }
