@@ -24,6 +24,7 @@ namespace NetBlog.API.Controllers
         public async Task<IActionResult> GetUserSummary(string id)
         {
             var userSummary = await _mediator.Send(new GetUserSummaryQuery(id));
+
             if (userSummary == null)
             {
                 return NotFound("User not found");
@@ -36,6 +37,7 @@ namespace NetBlog.API.Controllers
         {
             //to-do: add auth
             var updatedUserSummary = await _mediator.Send(new UpdateUserSummaryCommand(dto,id));
+
             if (updatedUserSummary == null)
             {
                 return NotFound("User not found");
