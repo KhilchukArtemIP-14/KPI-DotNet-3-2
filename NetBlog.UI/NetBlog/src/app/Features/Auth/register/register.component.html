@@ -21,8 +21,7 @@
           <div class="form-check ms-3 mb-2">
             <input class="form-check-input"
                    type="checkbox" id="flexCheckDefault"
-                  [ngModel]="isAuthor"
-            [ngModelOptions]="{standalone:true}">
+                  (click)="switchIsAuthor()">
             <label class="form-check-label" for="flexCheckDefault">
               I am an author
             </label>
