@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NetBlog.Application\NetBlog.Application.csproj" />
     <ProjectReference Include="..\NetBlog.Domain\NetBlog.Domain.csproj" />
   </ItemGroup>
 
