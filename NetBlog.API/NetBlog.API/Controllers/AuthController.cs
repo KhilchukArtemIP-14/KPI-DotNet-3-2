@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using NetBlog.Application.DTOs;
 using NetBlog.Application.Features.Authorization.Commands;
 
 namespace NetBlog.API.Controllers
@@ -16,9 +18,9 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterCommand command)
+        public async Task<IActionResult> Register(RegisterUserDTO dto)
         {
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(new RegisterCommand(dto));
 
             if (result == null) return BadRequest(new { Message = "Couldn't register user" });
 
@@ -26,9 +28,9 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginCommand command)
+        public async Task<IActionResult> Login(LoginUserDTO dto)
         {
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(new LoginCommand(dto));
 
             if (result == null) return BadRequest("Couldn't login user");
 

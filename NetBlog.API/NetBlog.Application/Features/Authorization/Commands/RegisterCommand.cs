@@ -13,17 +13,13 @@ namespace NetBlog.Application.Features.Authorization.Commands
 {
     public class RegisterCommand: IRequest<IdentityResult>
     {
-        [Required]
-        [MinLength(1)]
-        public string Name { get; set; }
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-        [Required]
-        [MinLength(6)]
-        public string Password { get; set; }
-        [Required]
-        public string[] Roles { get; set; }
+        public RegisterUserDTO RegisterUserDTO { get; set; }
+
+        public RegisterCommand(RegisterUserDTO registerUserDTO)
+        {
+            RegisterUserDTO = registerUserDTO;
+        }
+
         public class RegisterCommandHandler : IRequestHandler<RegisterCommand, IdentityResult>
         {
             private readonly UserManager<IdentityUser> _userManager;
@@ -35,18 +31,19 @@ namespace NetBlog.Application.Features.Authorization.Commands
 
             public async Task<IdentityResult> Handle(RegisterCommand request, CancellationToken cancellationToken)
             {
+                var dto = request.RegisterUserDTO;
                 var identityUser = new IdentityUser()
                 {
-                    UserName = request.Name,
-                    Email = request.Email,
+                    UserName = dto.Name,
+                    Email = dto.Email,
                 };
 
-                var identityResult = await _userManager.CreateAsync(identityUser, request.Password);
+                var identityResult = await _userManager.CreateAsync(identityUser, dto.Password);
                 if (identityResult.Succeeded)
                 {
-                    if (request.Roles != null && request.Roles.Any())
+                    if (dto.Roles != null && dto.Roles.Any())
                     {
-                        identityResult = await _userManager.AddToRolesAsync(identityUser, request.Roles);
+                        identityResult = await _userManager.AddToRolesAsync(identityUser, dto.Roles);
                         if (identityResult.Succeeded)
                         {
                             var claim = new Claim("bio", "Empty");

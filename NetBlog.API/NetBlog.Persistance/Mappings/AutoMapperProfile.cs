@@ -27,11 +27,10 @@ namespace NetBlog.Persistance.Mappings
             CreateMap<Post, PostShortcutDTO>();
             CreateMap<CreateCommentDTO, Comment>().
                 ForMember(c => c.DateCreated, opt => opt.MapFrom(_ => DateTime.Now));
-            CreateMap<CreatePostCommand, Post>()
+            CreateMap<CreatePostDTO, Post>()
                 .ForMember(c => c.DateCreated, opt => opt.MapFrom(_ => DateTime.Now));
-            CreateMap<UpdatePostCommand, Post>()
-                .ForMember(c => c.DateUpdated, opt => opt.MapFrom(_ => DateTime.Now))
-                .ForMember(c => c.Id, opt => opt.Ignore());
+            CreateMap<UpdatePostDTO, Post>()
+                .ForMember(c => c.DateUpdated, opt => opt.MapFrom(_ => DateTime.Now));
         }
     }
 }

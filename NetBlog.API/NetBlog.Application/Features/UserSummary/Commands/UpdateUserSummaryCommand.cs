@@ -14,16 +14,14 @@ namespace NetBlog.Application.Features.UserSummary.Commands
 {
     public class UpdateUserSummaryCommand : IRequest<UserSummaryDTO>
     {
-        [Required]
-        [MinLength(1)]
-        [FromRoute(Name = "id")]
-        public string UserId { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Name { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Bio { get; set; }
+        public string UserId {  get; set; }
+        public UpdateUserDTO UpdateUserDTO { get; set; }
+
+        public UpdateUserSummaryCommand(UpdateUserDTO updateUserDTO, string userId)
+        {
+            UpdateUserDTO = updateUserDTO;
+            UserId = userId;
+        }
 
         public class UpdateUserSummaryCommandHandler : IRequestHandler<UpdateUserSummaryCommand, UserSummaryDTO>
         {
@@ -35,13 +33,14 @@ namespace NetBlog.Application.Features.UserSummary.Commands
             }
             public async Task<UserSummaryDTO> Handle(UpdateUserSummaryCommand request, CancellationToken cancellationToken)
             {
-                if (request.Name == null || request.Bio == null) return null;
+                var dto = request.UpdateUserDTO;
+                if (dto.Name == null || dto.Bio == null) return null;
 
                 var user = await _userManager.FindByIdAsync(request.UserId);
 
                 if (user != null)
                 {
-                    user.UserName = request.Name;
+                    user.UserName = dto.Name;
                     var identityResult = await _userManager.UpdateAsync(user);
 
                     var bioClaim = (await _userManager.GetClaimsAsync(user))
@@ -52,7 +51,7 @@ namespace NetBlog.Application.Features.UserSummary.Commands
                         await _userManager.RemoveClaimAsync(user, bioClaim);
                     }
 
-                    var claim = new Claim("bio", request.Bio);
+                    var claim = new Claim("bio", dto.Bio);
                     var resultAddClaim = await _userManager.AddClaimAsync(user, claim);
 
                     if (identityResult.Succeeded && resultAddClaim.Succeeded)
@@ -63,7 +62,7 @@ namespace NetBlog.Application.Features.UserSummary.Commands
                             Name = user.UserName,
                             Email = user.Email,
                             Roles = (await _userManager.GetRolesAsync(user)).ToArray(),
-                            Bio = request.Bio
+                            Bio = dto.Bio
                         };
                         return updatedSummary;
                     }

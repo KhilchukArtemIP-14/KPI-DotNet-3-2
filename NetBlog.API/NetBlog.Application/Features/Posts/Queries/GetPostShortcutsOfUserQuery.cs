@@ -18,6 +18,13 @@ namespace NetBlog.Application.Features.Posts.Queries
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public bool OrderByDateAscending { get; set; }
+        public GetPostShortcutsOfUserQuery(string userId, int pageNumber, int pageSize, bool orderByDateAscending)
+        {
+            UserId = userId;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            OrderByDateAscending = orderByDateAscending;
+        }
         public class GetPostShortcutsOfUserQueryHandler : IRequestHandler<GetPostShortcutsOfUserQuery, List<PostShortcutDTO>>
         {
             private readonly IRepository<Post> _repository;

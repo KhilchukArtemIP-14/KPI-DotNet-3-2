@@ -18,6 +18,13 @@ namespace NetBlog.Application.Features.Posts.Queries
     {
         public Guid Id { get; set; }
         public int CommentsToLoad { get; set; }
+
+        public GetPostByIdQuery(Guid id, int commentsToLoad)
+        {
+            Id = id;
+            CommentsToLoad = commentsToLoad;
+        }
+
         public class GetPostByIdQueryHandler : IRequestHandler<GetPostByIdQuery, PostDTO>
         {
             private readonly IRepository<Post> _repository;

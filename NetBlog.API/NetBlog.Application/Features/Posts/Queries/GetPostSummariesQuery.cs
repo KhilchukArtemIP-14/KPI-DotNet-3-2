@@ -21,6 +21,13 @@ namespace NetBlog.Application.Features.Posts.Queries
         public int PageSize { get; set; }
         public string? SearchQuery { get; set; }
         public bool OrderByDateAscending { get; set; }
+        public GetPostSummariesQuery(int pageNumber, int pageSize, string? searchQuery, bool orderByDateAscending)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            SearchQuery = searchQuery;
+            OrderByDateAscending = orderByDateAscending;
+        }
         public class GetPostSummariesQueryHandler : IRequestHandler<GetPostSummariesQuery, List<PostSummaryDTO>>
         {
             private readonly IRepository<Post> _repository;

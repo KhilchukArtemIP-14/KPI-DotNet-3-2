@@ -14,6 +14,12 @@ namespace NetBlog.Application.Features.Posts.Commands
     public class DeletePostCommand : IRequest<PostDTO>
     {
         public Guid Id { get; set; }
+
+        public DeletePostCommand(Guid id)
+        {
+            Id = id;
+        }
+
         public class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, PostDTO>
         {
             private readonly IRepository<Post> _repository;

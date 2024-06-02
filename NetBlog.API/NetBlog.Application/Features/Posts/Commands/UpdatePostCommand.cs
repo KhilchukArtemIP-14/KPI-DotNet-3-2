@@ -16,15 +16,12 @@ namespace NetBlog.Application.Features.Posts.Commands
     public class UpdatePostCommand : IRequest<PostDTO>
     {
         public Guid Id { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Title { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string ContentPreview { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Content { get; set; }
+        public UpdatePostDTO UpdatePostDTO { get; set; }
+        public UpdatePostCommand(Guid id, UpdatePostDTO updatePostDTO)
+        {
+            Id = id;
+            UpdatePostDTO = updatePostDTO;
+        }
         public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, PostDTO>
         {
             private readonly IRepository<Post> _repository;
@@ -40,7 +37,7 @@ namespace NetBlog.Application.Features.Posts.Commands
             {
                 var entity = await _repository.Get(request.Id);
 
-                _mapper.Map(request, entity);
+                _mapper.Map(request.UpdatePostDTO, entity);
 
                 var result = await _repository.Update(entity);
                 return _mapper.Map<PostDTO>(result);

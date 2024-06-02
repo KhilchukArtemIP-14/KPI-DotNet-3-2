@@ -14,17 +14,12 @@ namespace NetBlog.Application.Features.Posts.Commands
 {
     public class CreatePostCommand : IRequest<PostDTO>
     {
-        [Required]
-        [MinLength(1)]
-        public string Title { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string ContentPreview { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Content { get; set; }
-        [Required]
-        public string CreatedBy { get; set; }
+        public CreatePostDTO CreatePostDTO { get; set; }
+
+        public CreatePostCommand(CreatePostDTO createPostDTO)
+        {
+            CreatePostDTO = createPostDTO;
+        }
     }
     public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, PostDTO>
     {
@@ -39,7 +34,7 @@ namespace NetBlog.Application.Features.Posts.Commands
 
         public async Task<PostDTO> Handle(CreatePostCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Post>(request);
+            var entity = _mapper.Map<Post>(request.CreatePostDTO);
 
             var res = await _repository.Add(entity);
 

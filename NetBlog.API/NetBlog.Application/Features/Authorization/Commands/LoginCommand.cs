@@ -16,12 +16,11 @@ namespace NetBlog.Application.Features.Authorization.Commands
 {
     public class LoginCommand:IRequest<LoginResponseDTO>
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-        [Required]
-        [MinLength(6)]
-        public string Password { get; set; }
+        public LoginUserDTO LoginUserDTO { get; set; }
+        public LoginCommand(LoginUserDTO loginUserDTO)
+        {
+            LoginUserDTO = loginUserDTO;
+        }
         public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponseDTO>
         {
             private readonly UserManager<IdentityUser> _userManager;
@@ -33,11 +32,12 @@ namespace NetBlog.Application.Features.Authorization.Commands
             }
             public async Task<LoginResponseDTO> Handle(LoginCommand request, CancellationToken cancellationToken)
             {
-                var user = await _userManager.FindByEmailAsync(request.Email);
+                var dto = request.LoginUserDTO;
+                var user = await _userManager.FindByEmailAsync(dto.Email);
 
                 if (user != null)
                 {
-                    var passwordCheck = await _userManager.CheckPasswordAsync(user, request.Password);
+                    var passwordCheck = await _userManager.CheckPasswordAsync(user, dto.Password);
                     if (passwordCheck)
                     {
                         var roles = await _userManager.GetRolesAsync(user);

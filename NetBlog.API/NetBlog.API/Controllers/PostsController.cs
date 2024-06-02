@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetBlog.Application.DTOs;
 using NetBlog.Application.Features.Posts.Commands;
 using NetBlog.Application.Features.Posts.Queries;
 
@@ -21,9 +22,9 @@ namespace NetBlog.API.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Author")]
-        public async Task<IActionResult> Add(CreatePostCommand command)
+        public async Task<IActionResult> Add(CreatePostDTO dto)
         {
-            var post = await _mediator.Send(command);
+            var post = await _mediator.Send(new CreatePostCommand(dto));
             return Ok(post);
         }
 
@@ -34,7 +35,7 @@ namespace NetBlog.API.Controllers
 
            //if (tryAuth.Succeeded)
             //{
-                var post = await _mediator.Send(new DeletePostCommand { Id = id });
+                var post = await _mediator.Send(new DeletePostCommand(id));
 
                 if (post == null) return NotFound("Post not found");
 
@@ -48,9 +49,7 @@ namespace NetBlog.API.Controllers
         public async Task<IActionResult> GetById(Guid id, [FromQuery] int commentsToLoad = 5)
         {
             var post = await _mediator.Send(
-                new GetPostByIdQuery { 
-                    Id = id, 
-                    CommentsToLoad = commentsToLoad });
+                new GetPostByIdQuery(id,commentsToLoad));
 
             if (post == null) return NotFound("Post not found");
 
@@ -61,11 +60,7 @@ namespace NetBlog.API.Controllers
         public async Task<IActionResult> GetPostShortcutsOfUser(string userId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] bool orderByDateAscending = false)
         {
             var post = await _mediator.Send(
-                new GetPostShortcutsOfUserQuery { 
-                    UserId = userId, 
-                    PageNumber = pageNumber, 
-                    PageSize = pageSize, 
-                    OrderByDateAscending = orderByDateAscending });
+                new GetPostShortcutsOfUserQuery(userId, pageNumber, pageSize, orderByDateAscending));
 
             if (post == null) return NotFound("Post not found");
 
@@ -76,23 +71,19 @@ namespace NetBlog.API.Controllers
         public async Task<IActionResult> GetPostSummaries([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5, [FromQuery] string? searchQuery = null, [FromQuery] bool orderByDateAscending = false)
         {
             var postSummaries = await _mediator.Send(
-                new GetPostSummariesQuery { 
-                    PageNumber = pageNumber, 
-                    PageSize = pageSize, 
-                    SearchQuery = searchQuery, 
-                    OrderByDateAscending = orderByDateAscending });
+                new GetPostSummariesQuery(pageNumber, pageSize, searchQuery, orderByDateAscending));
+
             return Ok(postSummaries);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, UpdatePostCommand command)
+        public async Task<IActionResult> Update(Guid id, UpdatePostDTO dto)
         {
             //var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
 
             //if (tryAuth.Succeeded)
             //{
-                command.Id = id;
-                var post = await _mediator.Send(command);
+                var post = await _mediator.Send(new UpdatePostCommand(id,dto));
 
                 if (post == null) return NotFound("Post not found");
 
