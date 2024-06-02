@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NetBlog.Application.Features.Authorization.Commands;
 using NetBlog.Domain.RepositoryContracts;
+using NetBlog.Persistance.Authorization;
 using NetBlog.Persistance.Context;
 using NetBlog.Persistance.Mappings;
 using NetBlog.Persistance.Repository.Implementations;
@@ -72,11 +73,7 @@ namespace NetBlog.API
             }
             );
 
-
-            /*builder.Services.AddScoped<IAuthService, AuthService>();
-            builder.Services.AddScoped<IPostService, PostService>();
-            builder.Services.AddScoped<ICommentsService, CommentService>();
-            builder.Services.AddScoped<IUserSummaryService, UserSummaryService>();
+            //builder.Services.AddScoped<IUserSummaryService, UserSummaryService>();
 
             builder.Services.AddScoped<IAuthorizationRequirement, CanModifyPostRequirement>();
             builder.Services.AddScoped<IAuthorizationRequirement, CanDeleteCommentRequirement>();
@@ -84,7 +81,7 @@ namespace NetBlog.API
 
             builder.Services.AddScoped<IAuthorizationHandler, CanModifyPostHandler>();
             builder.Services.AddScoped<IAuthorizationHandler, CanDeleteCommentHandler>();
-            builder.Services.AddScoped<IAuthorizationHandler, CanUpdateUserSummaryHandler>();*/
+            builder.Services.AddScoped<IAuthorizationHandler, CanUpdateUserSummaryHandler>();
 
             builder.Services
                 .AddIdentityCore<IdentityUser>()
@@ -116,7 +113,7 @@ namespace NetBlog.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                 });
 
-            /*builder.Services.AddAuthorization(options =>
+            builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("CanModifyPostPolicy", policy =>
                 {
@@ -130,7 +127,7 @@ namespace NetBlog.API
                 {
                     policy.Requirements.Add(new CanUpdateUserSummaryRequirement());
                 });
-            });*/
+            });
 
             var app = builder.Build();
 

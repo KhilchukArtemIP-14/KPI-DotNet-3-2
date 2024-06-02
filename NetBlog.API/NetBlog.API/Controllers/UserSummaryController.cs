@@ -35,14 +35,19 @@ namespace NetBlog.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUserSummary(string id, UpdateUserDTO dto)
         {
-            //to-do: add auth
-            var updatedUserSummary = await _mediator.Send(new UpdateUserSummaryCommand(dto,id));
-
-            if (updatedUserSummary == null)
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanUpdateUserSummary");
+            if (tryAuth.Succeeded)
             {
-                return NotFound("User not found");
+                var updatedUserSummary = await _mediator.Send(new UpdateUserSummaryCommand(dto,id));
+
+                if (updatedUserSummary == null)
+                {
+                    return NotFound("User not found");
+                }
+                return Ok(updatedUserSummary);
             }
-            return Ok(updatedUserSummary);
+
+            return new ForbidResult();
         }
     }
 }

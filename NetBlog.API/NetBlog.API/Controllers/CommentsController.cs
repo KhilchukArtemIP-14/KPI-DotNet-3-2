@@ -21,7 +21,7 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> CreateComment(CreateCommentDTO dto)
         {
             var comment = await _mediator.Send(new CreateCommentCommand(dto));
@@ -32,16 +32,16 @@ namespace NetBlog.API.Controllers
         [HttpDelete("{commentId}")]
         public async Task<IActionResult> DeleteComment(Guid commentId)
         {
-            //var tryAuth = await _authorizationService.AuthorizeAsync(User, commentId, "CanDeleteCommentPolicy");
-            //if (tryAuth.Succeeded)
-            //{
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, commentId, "CanDeleteCommentPolicy");
+            if (tryAuth.Succeeded)
+            {
                 var comment = await _mediator.Send(new DeleteCommentCommand(commentId));
 
                 if (comment == null) return NotFound("Comment not found");
 
                 return Ok(comment);
-            //}
-            //return new ForbidResult();
+            }
+            return new ForbidResult();
         }
 
         [HttpGet("post/{postId}")]

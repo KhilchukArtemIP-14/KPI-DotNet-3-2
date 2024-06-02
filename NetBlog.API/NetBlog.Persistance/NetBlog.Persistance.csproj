@@ -28,4 +28,8 @@
     <ProjectReference Include="..\NetBlog.Domain\NetBlog.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Authorization\" />
+  </ItemGroup>
+
 </Project>

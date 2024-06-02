@@ -21,7 +21,7 @@ namespace NetBlog.API.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Author")]
+        [Authorize(Roles = "Author")]
         public async Task<IActionResult> Add(CreatePostDTO dto)
         {
             var post = await _mediator.Send(new CreatePostCommand(dto));
@@ -31,18 +31,18 @@ namespace NetBlog.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            //var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
 
-           //if (tryAuth.Succeeded)
-            //{
+           if (tryAuth.Succeeded)
+           {
                 var post = await _mediator.Send(new DeletePostCommand(id));
 
                 if (post == null) return NotFound("Post not found");
 
                 return Ok(post);
-            //}
+           }
 
-            //return new ForbidResult();
+            return new ForbidResult();
         }
 
         [HttpGet("{id}")]
@@ -79,17 +79,17 @@ namespace NetBlog.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, UpdatePostDTO dto)
         {
-            //var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
+            var tryAuth = await _authorizationService.AuthorizeAsync(User, id, "CanModifyPostPolicy");
 
-            //if (tryAuth.Succeeded)
-            //{
+            if (tryAuth.Succeeded)
+            {
                 var post = await _mediator.Send(new UpdatePostCommand(id,dto));
 
                 if (post == null) return NotFound("Post not found");
 
                 return Ok(post);
-            //}
-            //return new ForbidResult();
+            }
+            return new ForbidResult();
         }
     }
 }
