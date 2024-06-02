@@ -5,30 +5,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace NetBlog.Domain.Entities
+namespace NetBlog.Domain.Entity
 {
-    public class Post : IEntity
+    public class Comment : IEntity
     {
         [Required]
         public Guid Id { get; set; }
         [Required]
-        [MinLength(1)]
-        public string Title { get; set; }
+        public string AuthorId { get; set; }
         [Required]
         [MinLength(1)]
-        public string ContentPreview { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Content { get; set; }
+        public string CommentText { get; set; }
         [Required]
         public DateTime DateCreated { get; set; }
-        public DateTime? DateUpdated { get; set; }
         [Required]
-        public string CreatedBy { get; set; }
+        public Guid PostId { get; set; }
 
-        public IEnumerable<Comment> Comments { get; set; }
+        public Post Post { get; set; }
         [Required]
         public bool IsDeleted { get; set; }
     }

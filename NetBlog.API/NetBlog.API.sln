@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.Domain", "NetBlog.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.Persistance", "NetBlog.Persistance\NetBlog.Persistance.csproj", "{A3ACD056-5253-4C01-A095-FF203F5E8426}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBlog.Application", "NetBlog.Application\NetBlog.Application.csproj", "{9BC3478E-8AC1-4E22-9502-0CBF15643E3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A3ACD056-5253-4C01-A095-FF203F5E8426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3ACD056-5253-4C01-A095-FF203F5E8426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3ACD056-5253-4C01-A095-FF203F5E8426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC3478E-8AC1-4E22-9502-0CBF15643E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC3478E-8AC1-4E22-9502-0CBF15643E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC3478E-8AC1-4E22-9502-0CBF15643E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC3478E-8AC1-4E22-9502-0CBF15643E3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

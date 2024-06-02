@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
 
 namespace NetBlog.Persistance.Repository.Implementations
 {
@@ -36,7 +38,7 @@ namespace NetBlog.Persistance.Repository.Implementations
             return entity;
         }
 
-        public Task<T> Get(Guid id, ISpecification<T> specification)
+        public Task<T> Get(Guid id, Specification<T> specification)
         {
             return ApplySpecifications(_context.Set<T>().AsQueryable(), specification)
                 .Where(t => !t.IsDeleted)
@@ -62,7 +64,7 @@ namespace NetBlog.Persistance.Repository.Implementations
                 .ToListAsync();
         }
 
-        public Task<List<T>> GetAll(ISpecification<T> specification, int pageNumber = 1, int pageSize = 5)
+        public Task<List<T>> GetAll(Specification<T> specification, int pageNumber = 1, int pageSize = 5)
         {
             if (pageNumber < 1 || pageSize < 1) return Task.FromResult(new List<T>());
             return ApplySpecifications(_context.Set<T>().AsQueryable(), specification)
@@ -83,24 +85,9 @@ namespace NetBlog.Persistance.Repository.Implementations
             await _context.SaveChangesAsync();
             return entity;
         }
-        private IQueryable<T> ApplySpecifications(IQueryable<T> inputQuery, ISpecification<T> specification)
+        private IQueryable<T> ApplySpecifications(IQueryable<T> inputQuery, Specification<T> specification)
         {
-            var query = inputQuery;
-
-            if (specification.Criteria != null)
-            {
-                query = query.Where(specification.Criteria);
-            }
-
-            query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
-
-            if (specification.OrderBy != null)
-            {
-                query = specification.OrderByAscending.Value ? query.OrderBy(specification.OrderBy) : query.OrderByDescending(specification.OrderBy);
-            }
-
-
-            return query;
+            return SpecificationEvaluator.Default.GetQuery(inputQuery,specification);
         }
     }
 }
