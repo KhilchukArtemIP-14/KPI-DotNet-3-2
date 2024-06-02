@@ -11,8 +11,6 @@
     <Folder Include="Features\Comments\Queries\" />
     <Folder Include="Features\Posts\Commands\" />
     <Folder Include="Features\Posts\Queries\" />
-    <Folder Include="Features\UserSummary\Commands\" />
-    <Folder Include="Features\UserSummary\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
