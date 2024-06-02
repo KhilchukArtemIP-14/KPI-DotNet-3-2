@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetBlog.Domain.Common;
 using NetBlog.Persistance.Context;
-using NetBlog.Persistance.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
+using NetBlog.Domain.RepositoryContracts;
 
 namespace NetBlog.Persistance.Repository.Implementations
 {

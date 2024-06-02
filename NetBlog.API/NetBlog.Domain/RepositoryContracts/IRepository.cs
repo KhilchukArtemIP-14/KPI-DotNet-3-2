@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetBlog.Persistance.Repository.Interfaces
+namespace NetBlog.Domain.RepositoryContracts
 {
     public interface IRepository<T> where T : class, IEntity
     {

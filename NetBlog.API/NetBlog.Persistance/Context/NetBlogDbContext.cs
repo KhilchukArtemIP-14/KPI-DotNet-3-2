@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using NetBlog.Domain.Entities;
+using NetBlog.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
