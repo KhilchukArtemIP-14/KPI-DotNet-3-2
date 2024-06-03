@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="mt-4">{{post.title}}</h1>
+  <a *ngIf="canEdit()" class="btn btn-success" [routerLink]="['/posts/',postId,'edit']">Edit</a>
+  <button class="btn btn-danger ms-2" *ngIf="canEdit()" (click)="delete()">Delete</button>
+
+  <h6 class="text-secondary font-italic">{{post.createdBy.userName}}<i class="bi bi-dot fs-5"></i>Date posted: {{post.dateCreated | date:'MM/dd/yyyy HH:mm'}}</h6>
+  <h6 *ngIf="post.dateUpdated!=null" class="text-secondary font-italic">Last updated: {{post.dateUpdated | date:'MM/dd/yyyy HH:mm'}}</h6>
+  <p class="fs-4 mt-1" *ngFor="let passage of post.content.split('\n')">{{passage}}</p>
+
+  <hr/>
+  <h3>Comments:</h3>
+  <app-view-post-comments [comments]="post.comments" [postId]="postId"></app-view-post-comments>
+</div>
