@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Recent posts</h2>
+  <div *ngFor="let post of posts">
+    <div class="card bg-light text-dark mb-3">
+      <div class="card-body p-3">
+        <h4>{{post.title}}</h4>
+        <p class="text-secondary font-italic">Date posted: {{post.dateCreated | date:'MM/dd/yyyy'}}</p>
+        <p>{{post.contentPreview}}...</p>
+        <a class="btn btn-primary" href="/posts/{{post.id}}">View</a>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!isLoading"
+       class="text-center mb-3">
+    <div class="col mt-3">
+      <div class="spinner-border text-primary" role="status">
+      </div>
+      <p class="sr-only">Calculating...</p>
+    </div>
+  </div>
+</div>
