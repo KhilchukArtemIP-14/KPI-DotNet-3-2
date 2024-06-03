@@ -42,4 +42,8 @@ export class RegisterComponent implements OnInit{
       },
         error => {this.toastr.error("Oops, couldn't register"); console.log(error)})
     }
+
+  switchIsAuthor() {
+    this.isAuthor=!this.isAuthor
+  }
 }
